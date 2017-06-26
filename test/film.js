@@ -1,0 +1,239 @@
+//During the test the env variable is set to test
+process.env.NODE_ENV = 'test';
+
+let mongoose = require("mongoose");
+let Film = require('../app/models/film');
+
+//Require the dev-dependencies
+let chai = require('chai');
+let chaiHttp = require('chai-http');
+let server = require('../server');
+let should = chai.should();
+
+// Use bluebird
+mongoose.Promise = require('bluebird');
+
+chai.use(chaiHttp);
+//Our parent block
+describe('Films', () => {
+    beforeEach((done) => { //Before each test we empty the database
+        Film.remove({}, (err) => {
+           done();
+        });
+    });
+/*
+  * Test the /GET route
+  */
+  describe('/GET film', () => {
+      it('it should GET all the films', (done) => {
+        chai.request(server)
+            .get('/film')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('array');
+                res.body.length.should.be.eql(0);
+              done();
+            });
+      });
+  });
+
+  /*
+  * Test the /POST route
+  */
+  describe('/POST film', () => {
+      it('it should not POST a film without runtime field', (done) => {
+        let film = {
+          title: "Pulp Fiction",
+          writer: "Quentin Tarantino",
+          director: "Quentin Tarantino",
+          starring: "John Travolta, Samual L. Jackson",
+          genre: "crime",
+          country: "USA",
+          year: 1994,
+          language: "English",
+          certificate: 18,
+          synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
+          poster: "Pulpfiction.jpeg"
+        }
+        chai.request(server)
+            .post('/film')
+            .send(film)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('errors');
+                res.body.errors.should.have.property('runtime');
+                res.body.errors.runtime.should.have.property('kind').eql('required');
+              done();
+            });
+      });
+      it('it should POST a film ', (done) => {
+        let film = {
+            title: "Pulp Fiction",
+            writer: "Quentin Tarantino",
+            director: "Quentin Tarantino",
+            starring: "John Travolta, Samual L. Jackson",
+            genre: "crime",
+            country: "USA",
+            year: 1994,
+            language: "English",
+            runtime: 154,
+            certificate: 18,
+            synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
+            poster: "Pulpfiction.jpeg"
+        }
+        chai.request(server)
+            .post('/film')
+            .send(film)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('message').eql('Film successfully added!');
+                res.body.film.should.have.property('title');
+                res.body.film.should.have.property('writer');
+                res.body.film.should.have.property('director');
+                res.body.film.should.have.property('starring');
+                res.body.film.should.have.property('genre');
+                res.body.film.should.have.property('country');
+                res.body.film.should.have.property('year');
+                res.body.film.should.have.property('language');
+                res.body.film.should.have.property('runtime');
+                res.body.film.should.have.property('certificate');
+                res.body.film.should.have.property('synopsis');
+                res.body.film.should.have.property('poster');
+              done();
+            });
+      });
+  });
+  /*
+    * Test the /GET/:id route
+    */
+    describe('/GET/:id film', () => {
+        it('it should GET a film by the given id', (done) => {
+          let film = new Film(
+            {
+              title: "Pulp Fiction",
+              writer: "Quentin Tarantino",
+              director: "Quentin Tarantino",
+              starring: "John Travolta, Samual L. Jackson",
+              genre: "crime",
+              country: "USA",
+              year: 1994,
+              language: "English",
+              runtime: 154,
+              certificate: 18,
+              synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
+              poster: "Pulpfiction.jpeg"
+             }
+            );
+          film.save((err, film) => {
+              chai.request(server)
+              .get('/film/' + film.id)
+              .send(film)
+              .end((err, res) => {
+                  res.should.have.status(200);
+                  res.body.should.be.a('object');
+                  res.body.should.have.property('title');
+                  res.body.should.have.property('writer');
+                  res.body.should.have.property('director');
+                  res.body.should.have.property('starring');
+                  res.body.should.have.property('genre');
+                  res.body.should.have.property('country');
+                  res.body.should.have.property('year');
+                  res.body.should.have.property('language');
+                  res.body.should.have.property('runtime');
+                  res.body.should.have.property('certificate');
+                  res.body.should.have.property('synopsis');
+                  res.body.should.have.property('poster');
+                  res.body.should.have.property('_id').eql(film.id);
+                done();
+              });
+          });
+
+        });
+    });
+    /*
+ * Test the /PUT/:id route
+ */
+ describe('/PUT/:id film', () => {
+     it('it should UPDATE a film given the id', (done) => {
+       let film = new Film(
+         {
+           title: "The Godfather",
+           writer: "Mario Puzo",
+           director: "Francis Ford Copolla",
+           starring: "Al Pacino, Marlon Brando",
+           genre: "crime",
+           country: "USA",
+           year: 1971,
+           language: "English",
+           runtime: 120,
+           certificate: 18,
+           synopsis: "Organised crime in 1960s New York",
+           poster: "Goldfather.jpeg"
+         }
+       )
+       film.save((err, film) => {
+               chai.request(server)
+               .put('/film/' + film.id)
+               .send({
+                 title: "The Godfather",
+                 writer: "Mario Puzo",
+                 director: "Francis Ford Copolla",
+                 starring: "Al Pacino, Marlon Brando",
+                 genre: "crime",
+                 country: "USA",
+                 year: 1972,
+                 language: "English",
+                 runtime: 120,
+                 certificate: 18,
+                 synopsis: "Organised crime in 1960s New York",
+                 poster: "Goldfather.jpeg"
+               }
+             )
+               .end((err, res) => {
+                   res.should.have.status(200);
+                   res.body.should.be.a('object');
+                   res.body.should.have.property('message').eql('Film updated!');
+                   res.body.film.should.have.property('year').eql(1972);
+                 done();
+               });
+         });
+     });
+ });
+ /*
+  * Test the /DELETE/:id route
+  */
+  describe('/DELETE/:id film', () => {
+      it('it should DELETE a film given the id', (done) => {
+        let film = new Film(
+          {
+          title: "The Godfather",
+          writer: "Mario Puzo",
+          director: "Francis Ford Copolla",
+          starring: "Al Pacino, Marlon Brando",
+          genre: "crime",
+          country: "USA",
+          year: 1971,
+          language: "English",
+          runtime: 120,
+          certificate: 18,
+          synopsis: "Organised crime in 1960s New York",
+          poster: "Goldfather.jpeg"
+        }
+      )
+        film.save((err, film) => {
+                chai.request(server)
+                .delete('/film/' + film.id)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('message').eql('Film successfully deleted!');
+                    res.body.result.should.have.property('ok').eql(1);
+                    res.body.result.should.have.property('n').eql(1);
+                  done();
+                });
+          });
+      });
+  });
+});
