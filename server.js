@@ -35,10 +35,10 @@ app.use(bodyParser.json({ type: 'application/json'}));
 
 app.get("/", (req, res) => res.json({message: "Welcome to our Filmstore!"}));
 
-app.route("/film")
+app.route("/movieApp/films")
     .get(film.getFilms)
     .post(film.postFilm);
-app.route("/film/:id")
+app.route("/movieApp/films/:id")
     .get(film.getFilm)
     .delete(film.deleteFilm)
     .put(film.updateFilm);

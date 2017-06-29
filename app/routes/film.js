@@ -37,9 +37,13 @@ function postFilm(req, res) {
 /*
  * GET /film/:id route to retrieve a film given its id.
  */
-function getFilm(req, res) {
+function getFilm(req, res, next) {
     Film.findById(req.params.id, (err, film) => {
         if(err) res.send(err);
+        if(film == null){
+          res.json({ message: "Film not found"});
+          return next();
+        }
         //If no errors, send it back to the client
         res.json(film);
     });
