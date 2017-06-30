@@ -27,7 +27,7 @@ describe('Films', () => {
   describe('/GET film', () => {
       it('it should GET all the films', (done) => {
         chai.request(server)
-            .get('/film')
+            .get('/movieApp/films')
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('array');
@@ -56,7 +56,7 @@ describe('Films', () => {
           poster: "Pulpfiction.jpeg"
         }
         chai.request(server)
-            .post('/film')
+            .post('/movieApp/films')
             .send(film)
             .end((err, res) => {
                 res.should.have.status(200);
@@ -83,7 +83,7 @@ describe('Films', () => {
             poster: "Pulpfiction.jpeg"
         }
         chai.request(server)
-            .post('/film')
+            .post('/movieApp/films')
             .send(film)
             .end((err, res) => {
                 res.should.have.status(200);
@@ -128,7 +128,7 @@ describe('Films', () => {
             );
           film.save((err, film) => {
               chai.request(server)
-              .get('/film/' + film.id)
+              .get('/movieApp/films/' + film.id)
               .send(film)
               .end((err, res) => {
                   res.should.have.status(200);
@@ -175,7 +175,7 @@ describe('Films', () => {
        )
        film.save((err, film) => {
                chai.request(server)
-               .put('/film/' + film.id)
+               .put('/movieApp/films/' + film.id)
                .send({
                  title: "The Godfather",
                  writer: "Mario Puzo",
@@ -224,7 +224,7 @@ describe('Films', () => {
       )
         film.save((err, film) => {
                 chai.request(server)
-                .delete('/film/' + film.id)
+                .delete('/movieApp/films/' + film.id)
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
