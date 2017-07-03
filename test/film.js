@@ -152,6 +152,186 @@ describe('Films', () => {
 
         });
     });
+
+    describe('/GET/title/:title film', () => {
+        it('it should GET a film by the given title', (done) => {
+          let film = new Film(
+            {
+              title: "Pulp Fiction",
+              writer: "Quentin Tarantino",
+              director: "Quentin Tarantino",
+              starring: "John Travolta, Samual L. Jackson",
+              genre: "crime",
+              country: "USA",
+              year: 1994,
+              language: "English",
+              runtime: 154,
+              certificate: 18,
+              synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
+              poster: "Pulpfiction.jpeg"
+             }
+            );
+          film.save((err, film) => {
+              chai.request(server)
+              .get('/movieApp/films/title/' + film.title)
+              .send(film)
+              .end((err, res) => {
+                  res.should.have.status(200);
+                  res.body.should.be.a('array');
+                  res.body[0].should.have.property('title').eql(film.title);
+                  res.body[0].should.have.property('writer');
+                  res.body[0].should.have.property('director');
+                  res.body[0].should.have.property('starring');
+                  res.body[0].should.have.property('genre');
+                  res.body[0].should.have.property('country');
+                  res.body[0].should.have.property('year');
+                  res.body[0].should.have.property('language');
+                  res.body[0].should.have.property('runtime');
+                  res.body[0].should.have.property('certificate');
+                  res.body[0].should.have.property('synopsis');
+                  res.body[0].should.have.property('poster');
+                  res.body[0].should.have.property('_id');
+                done();
+              });
+          });
+
+        });
+    });
+
+    describe('/GET/genre/:genre film', () => {
+        it('it should GET a film by the given genre', (done) => {
+          let film = new Film(
+            {
+              title: "Pulp Fiction",
+              writer: "Quentin Tarantino",
+              director: "Quentin Tarantino",
+              starring: "John Travolta, Samual L. Jackson",
+              genre: "crime",
+              country: "USA",
+              year: 1994,
+              language: "English",
+              runtime: 154,
+              certificate: 18,
+              synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
+              poster: "Pulpfiction.jpeg"
+             }
+            );
+          film.save((err, film) => {
+              chai.request(server)
+              .get('/movieApp/films/genre/' + film.genre)
+              .send(film)
+              .end((err, res) => {
+                  res.should.have.status(200);
+                  res.body.should.be.a('array');
+                  res.body[0].should.have.property('title');
+                  res.body[0].should.have.property('writer');
+                  res.body[0].should.have.property('director');
+                  res.body[0].should.have.property('starring');
+                  res.body[0].should.have.property('genre').eql(film.genre);
+                  res.body[0].should.have.property('country');
+                  res.body[0].should.have.property('year');
+                  res.body[0].should.have.property('language');
+                  res.body[0].should.have.property('runtime');
+                  res.body[0].should.have.property('certificate');
+                  res.body[0].should.have.property('synopsis');
+                  res.body[0].should.have.property('poster');
+                  res.body[0].should.have.property('_id');
+                done();
+              });
+          });
+
+        });
+    });
+
+    describe('/GET/year/:year film', () => {
+        it('it should GET a film by the given year', (done) => {
+          let film = new Film(
+            {
+              title: "Pulp Fiction",
+              writer: "Quentin Tarantino",
+              director: "Quentin Tarantino",
+              starring: "John Travolta, Samual L. Jackson",
+              genre: "crime",
+              country: "USA",
+              year: 1994,
+              language: "English",
+              runtime: 154,
+              certificate: 18,
+              synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
+              poster: "Pulpfiction.jpeg"
+             }
+            );
+          film.save((err, film) => {
+              chai.request(server)
+              .get('/movieApp/films/year/' + film.year)
+              .send(film)
+              .end((err, res) => {
+                  res.should.have.status(200);
+                  res.body.should.be.a('array');
+                  res.body[0].should.have.property('title');
+                  res.body[0].should.have.property('writer');
+                  res.body[0].should.have.property('director');
+                  res.body[0].should.have.property('starring');
+                  res.body[0].should.have.property('genre');
+                  res.body[0].should.have.property('country');
+                  res.body[0].should.have.property('year').eql(film.year);
+                  res.body[0].should.have.property('language');
+                  res.body[0].should.have.property('runtime');
+                  res.body[0].should.have.property('certificate');
+                  res.body[0].should.have.property('synopsis');
+                  res.body[0].should.have.property('poster');
+                  res.body[0].should.have.property('_id');
+                done();
+              });
+          });
+
+        });
+    });
+
+    describe('/GET/certificate/:certificate film', () => {
+        it('it should GET a film by the given certificate', (done) => {
+          let film = new Film(
+            {
+              title: "Pulp Fiction",
+              writer: "Quentin Tarantino",
+              director: "Quentin Tarantino",
+              starring: "John Travolta, Samual L. Jackson",
+              genre: "crime",
+              country: "USA",
+              year: 1994,
+              language: "English",
+              runtime: 154,
+              certificate: 18,
+              synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
+              poster: "Pulpfiction.jpeg"
+             }
+            );
+          film.save((err, film) => {
+              chai.request(server)
+              .get('/movieApp/films/certificate/' + film.certificate)
+              .send(film)
+              .end((err, res) => {
+                  res.should.have.status(200);
+                  res.body.should.be.a('array');
+                  res.body[0].should.have.property('title');
+                  res.body[0].should.have.property('writer');
+                  res.body[0].should.have.property('director');
+                  res.body[0].should.have.property('starring');
+                  res.body[0].should.have.property('genre');
+                  res.body[0].should.have.property('country');
+                  res.body[0].should.have.property('year');
+                  res.body[0].should.have.property('language');
+                  res.body[0].should.have.property('runtime');
+                  res.body[0].should.have.property('certificate').eql(film.certificate);
+                  res.body[0].should.have.property('synopsis');
+                  res.body[0].should.have.property('poster');
+                  res.body[0].should.have.property('_id');
+                done();
+              });
+          });
+
+        });
+    });
     /*
  * Test the /PUT/:id route
  */
