@@ -49,6 +49,46 @@ function getFilm(req, res, next) {
     });
 }
 
+function getFilmByTitle(req, res, next) {
+  //Query the DB and if no errors, send all the films
+  let query = Film.find({title:req.params.title});
+  query.exec((err, films) => {
+      if(err) res.send(err);
+      //If no errors, send them back to the client
+      res.json(films);
+  });
+}
+
+function getFilmByGenre(req, res, next) {
+  //Query the DB and if no errors, send all the films
+  let query = Film.find({genre:req.params.genre});
+  query.exec((err, films) => {
+      if(err) res.send(err);
+      //If no errors, send them back to the client
+      res.json(films);
+  });
+}
+
+function getFilmByYear(req, res, next) {
+  //Query the DB and if no errors, send all the films
+  let query = Film.find({year:req.params.year});
+  query.exec((err, films) => {
+      if(err) res.send(err);
+      //If no errors, send them back to the client
+      res.json(films);
+  });
+}
+
+function getFilmByCertificate(req, res, next) {
+  //Query the DB and if no errors, send all the films
+  let query = Film.find({certificate:req.params.certificate});
+  query.exec((err, films) => {
+      if(err) res.send(err);
+      //If no errors, send them back to the client
+      res.json(films);
+  });
+}
+
 /*
  * DELETE /film/:id to delete a film given its id.
  */
@@ -72,4 +112,4 @@ function updateFilm(req, res) {
 }
 
 //export all the functions
-module.exports = { getFilms, postFilm, getFilm, deleteFilm, updateFilm };
+module.exports = { getFilms, postFilm, getFilm, deleteFilm, updateFilm, getFilmByTitle, getFilmByGenre, getFilmByYear, getFilmByCertificate };

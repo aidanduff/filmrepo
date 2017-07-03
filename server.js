@@ -42,6 +42,14 @@ app.route("/movieApp/films/:id")
     .get(film.getFilm)
     .delete(film.deleteFilm)
     .put(film.updateFilm);
+app.route("/movieApp/films/title/:title")
+      .get(film.getFilmByTitle);
+app.route("/movieApp/films/genre/:genre")
+      .get(film.getFilmByGenre);
+app.route("/movieApp/films/year/:year")
+      .get(film.getFilmByYear);
+app.route("/movieApp/films/certificate/:certificate")
+      .get(film.getFilmByCertificate);
 
 app.listen(port);
 console.log("Listening on port " + port);
