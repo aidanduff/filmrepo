@@ -15,7 +15,7 @@ mongoose.Promise = require('bluebird');
 
 chai.use(chaiHttp);
 //Our parent block
-describe('Films', () => {
+describe('Integration Tests', () => {
     beforeEach((done) => { //Before each test we empty the database
         Film.remove({}, (err) => {
            done();
