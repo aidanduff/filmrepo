@@ -7,11 +7,15 @@ mongoose.Promise = require('bluebird');
 /*
  * GET /film route to retrieve all the films.
  */
-function getFilms(req, res) {
+function getFilms(req, res, next) {
     //Query the DB and if no errors, send all the films
     let query = Film.find({});
     query.exec((err, films) => {
         if(err) res.send(err);
+        if(films.length == 0){
+          res.status(204).json({ message: "Film not found"});
+          return next();
+        }
         //If no errors, send them back to the client
         res.json(films);
     });
@@ -26,7 +30,7 @@ function postFilm(req, res) {
     //Save it into the DB.
     newFilm.save((err,film) => {
         if(err) {
-            res.send(err);
+            res.status(400).send(err);
         }
         else { //If no errors, send it back to the client
             res.json({message: "Film successfully added!", film });
@@ -39,13 +43,17 @@ function postFilm(req, res) {
  */
 function getFilm(req, res, next) {
     Film.findById(req.params.id, (err, film) => {
-        if(err) res.send(err);
-        if(film == null){
+        if(err) {
+            res.status(400).send(err);
+        }
+        else if(film == null){
           res.status(404).json({ message: "Film not found"});
           return next();
         }
         //If no errors, send it back to the client
+        else{
         res.json(film);
+      }
     });
 }
 
@@ -108,20 +116,32 @@ function getFilmByCertificate(req, res, next) {
 /*
  * DELETE /film/:id to delete a film given its id.
  */
-function deleteFilm(req, res) {
-    Film.remove({_id : req.params.id}, (err, result) => {
-        res.json({ message: "Film successfully deleted!", result });
-    });
+function deleteFilm(req, res, next) {
+  Film.findById({_id: req.params.id}, (err, film) => {
+      if(err) res.send(err);
+      if(film == null){
+        res.status(404).json({ message: "Film not found"});
+        return next();
+      }
+      Film.remove({_id : req.params.id}, (err, result) => {
+          res.json({ message: "Film successfully deleted!", result });
+      });
+  });
 }
 
 /*
  * PUT /film/:id to updatea a film given its id
  */
-function updateFilm(req, res) {
+function updateFilm(req, res, next) {
     Film.findById({_id: req.params.id}, (err, film) => {
         if(err) res.send(err);
+        if(film == null){
+          res.status(404).json({ message: "Film not found"});
+          return next();
+        }
         Object.assign(film, req.body).save((err, film) => {
-            if(err) res.send(err);
+            if(err) res.status(400).send(err);
+            return next();
             res.json({ message: 'Film updated!', film });
         });
     });
