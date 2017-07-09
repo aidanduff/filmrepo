@@ -52,7 +52,7 @@ function getFilm(req, res, next) {
         }
         //If no errors, send it back to the client
         else{
-        res.json(film);
+          res.json(film);
       }
     });
 }
@@ -61,12 +61,13 @@ function getFilmByTitle(req, res, next) {
   //Query the DB and if no errors, send all the films
   let query = Film.find({title:req.params.title});
   query.exec((err, films) => {
-      if(err) res.send(err);
-      if(res.body == null){
-        res.status(404).json({message: 'No films exist with this title'});
-        return next();
-      }
-      //If no errors, send them back to the client
+    if(err) {
+        res.status(400).send(err);
+    }
+    else if(films.length == 0){
+      res.status(404).json({ message: "Film not found"});
+      return next();
+    }
       res.json(films);
   });
 }
@@ -75,12 +76,13 @@ function getFilmByGenre(req, res, next) {
   //Query the DB and if no errors, send all the films
   let query = Film.find({genre:req.params.genre});
   query.exec((err, films) => {
-      if(err) res.send(err);
-      if(res.body == null){
-        res.status(404).json({message: 'No films exist with this genre'});
-        return next();
-      }
-      //If no errors, send them back to the client
+    if(err) {
+        res.status(400).send(err);
+    }
+    else if(films.length == 0){
+      res.status(404).json({ message: "Film not found"});
+      return next();
+    }
       res.json(films);
   });
 }
@@ -89,12 +91,13 @@ function getFilmByYear(req, res, next) {
   //Query the DB and if no errors, send all the films
   let query = Film.find({year:req.params.year});
   query.exec((err, films) => {
-      if(err) res.send(err);
-      if(res.body == null){
-        res.status(404).json({message: 'No films exist with this year'});
-        return next();
-      }
-      //If no errors, send them back to the client
+    if(err) {
+        res.status(400).send(err);
+    }
+    else if(films.length == 0){
+      res.status(404).json({ message: "Film not found"});
+      return next();
+    }
       res.json(films);
   });
 }
@@ -103,12 +106,13 @@ function getFilmByCertificate(req, res, next) {
   //Query the DB and if no errors, send all the films
   let query = Film.find({certificate:req.params.certificate});
   query.exec((err, films) => {
-      if(err) res.send(err);
-      if(res.body == null){
-        res.status(404).json({message: 'No films exist with this certificate'});
-        return next();
-      }
-      //If no errors, send them back to the client
+    if(err) {
+        res.status(400).send(err);
+    }
+    else if(films.length == 0){
+      res.status(404).json({ message: "Film not found"});
+      return next();
+    }
       res.json(films);
   });
 }
@@ -134,16 +138,21 @@ function deleteFilm(req, res, next) {
  */
 function updateFilm(req, res, next) {
     Film.findById({_id: req.params.id}, (err, film) => {
-        if(err) res.send(err);
-        if(film == null){
-          res.status(404).json({ message: "Film not found"});
-          return next();
-        }
+      if(err) {
+          res.status(400).send(err);
+      }
+      else if(film == null){
+        res.status(404).json({ message: "Film not found"});
+        return next();
+      }
+      //If no errors, send it back to the client
+      else{
         Object.assign(film, req.body).save((err, film) => {
             if(err) res.status(400).send(err);
-            return next();
+            //return next();
             res.json({ message: 'Film updated!', film });
         });
+      }
     });
 }
 
