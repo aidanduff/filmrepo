@@ -3,6 +3,20 @@ process.env.NODE_ENV = 'test';
 
 let mongoose = require("mongoose");
 let Film = require('../app/models/film');
+let pulpFiction = {
+    title: "Pulp Fiction",
+    writer: "Quentin Tarantino",
+    director: "Quentin Tarantino",
+    starring: "John Travolta, Samual L. Jackson",
+    genre: "crime",
+    country: "USA",
+    year: 1994,
+    language: "English",
+    runtime: 154,
+    certificate: 18,
+    synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
+    poster: "Pulpfiction.jpeg"
+}
 
 //Require the dev-dependencies
 let chai = require('chai');
@@ -26,6 +40,27 @@ describe('Integration Tests', () => {
   */
   describe('/GET film', () => {
       it('it should GET all the films', (done) => {
+        chai.request(server)
+            .post('/movieApp/films')
+            .send(pulpFiction)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('message').eql('Film successfully added!');
+                res.body.film.should.have.property('title');
+                res.body.film.should.have.property('writer');
+                res.body.film.should.have.property('director');
+                res.body.film.should.have.property('starring');
+                res.body.film.should.have.property('genre');
+                res.body.film.should.have.property('country');
+                res.body.film.should.have.property('year');
+                res.body.film.should.have.property('language');
+                res.body.film.should.have.property('runtime');
+                res.body.film.should.have.property('certificate');
+                res.body.film.should.have.property('synopsis');
+                res.body.film.should.have.property('poster');
+              done();
+            });
         chai.request(server)
             .get('/movieApp/films')
             .end((err, res) => {
@@ -59,7 +94,7 @@ describe('Integration Tests', () => {
             .post('/movieApp/films')
             .send(film)
             .end((err, res) => {
-                res.should.have.status(200);
+                res.should.have.status(400);
                 res.body.should.be.a('object');
                 res.body.should.have.property('errors');
                 res.body.errors.should.have.property('runtime');
@@ -68,23 +103,9 @@ describe('Integration Tests', () => {
             });
       });
       it('it should POST a film ', (done) => {
-        let film = {
-            title: "Pulp Fiction",
-            writer: "Quentin Tarantino",
-            director: "Quentin Tarantino",
-            starring: "John Travolta, Samual L. Jackson",
-            genre: "crime",
-            country: "USA",
-            year: 1994,
-            language: "English",
-            runtime: 154,
-            certificate: 18,
-            synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
-            poster: "Pulpfiction.jpeg"
-        }
         chai.request(server)
             .post('/movieApp/films')
-            .send(film)
+            .send(pulpFiction)
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
@@ -110,26 +131,11 @@ describe('Integration Tests', () => {
     */
     describe('/GET/:id film', () => {
         it('it should GET a film by the given id', (done) => {
-          let film = new Film(
-            {
-              title: "Pulp Fiction",
-              writer: "Quentin Tarantino",
-              director: "Quentin Tarantino",
-              starring: "John Travolta, Samual L. Jackson",
-              genre: "crime",
-              country: "USA",
-              year: 1994,
-              language: "English",
-              runtime: 154,
-              certificate: 18,
-              synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
-              poster: "Pulpfiction.jpeg"
-             }
-            );
-          film.save((err, film) => {
+          let film = new Film(pulpFiction);
+          film.save((err, pulpFiction) => {
               chai.request(server)
               .get('/movieApp/films/' + film.id)
-              .send(film)
+              .send(pulpFiction)
               .end((err, res) => {
                   res.should.have.status(200);
                   res.body.should.be.a('object');
@@ -155,22 +161,7 @@ describe('Integration Tests', () => {
 
     describe('/GET/title/:title film', () => {
         it('it should GET a film by the given title', (done) => {
-          let film = new Film(
-            {
-              title: "Pulp Fiction",
-              writer: "Quentin Tarantino",
-              director: "Quentin Tarantino",
-              starring: "John Travolta, Samual L. Jackson",
-              genre: "crime",
-              country: "USA",
-              year: 1994,
-              language: "English",
-              runtime: 154,
-              certificate: 18,
-              synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
-              poster: "Pulpfiction.jpeg"
-             }
-            );
+          let film = new Film(pulpFiction);
           film.save((err, film) => {
               chai.request(server)
               .get('/movieApp/films/title/' + film.title)
@@ -200,22 +191,7 @@ describe('Integration Tests', () => {
 
     describe('/GET/genre/:genre film', () => {
         it('it should GET a film by the given genre', (done) => {
-          let film = new Film(
-            {
-              title: "Pulp Fiction",
-              writer: "Quentin Tarantino",
-              director: "Quentin Tarantino",
-              starring: "John Travolta, Samual L. Jackson",
-              genre: "crime",
-              country: "USA",
-              year: 1994,
-              language: "English",
-              runtime: 154,
-              certificate: 18,
-              synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
-              poster: "Pulpfiction.jpeg"
-             }
-            );
+          let film = new Film(pulpFiction);
           film.save((err, film) => {
               chai.request(server)
               .get('/movieApp/films/genre/' + film.genre)
@@ -245,22 +221,7 @@ describe('Integration Tests', () => {
 
     describe('/GET/year/:year film', () => {
         it('it should GET a film by the given year', (done) => {
-          let film = new Film(
-            {
-              title: "Pulp Fiction",
-              writer: "Quentin Tarantino",
-              director: "Quentin Tarantino",
-              starring: "John Travolta, Samual L. Jackson",
-              genre: "crime",
-              country: "USA",
-              year: 1994,
-              language: "English",
-              runtime: 154,
-              certificate: 18,
-              synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
-              poster: "Pulpfiction.jpeg"
-             }
-            );
+          let film = new Film(pulpFiction);
           film.save((err, film) => {
               chai.request(server)
               .get('/movieApp/films/year/' + film.year)
@@ -290,22 +251,7 @@ describe('Integration Tests', () => {
 
     describe('/GET/certificate/:certificate film', () => {
         it('it should GET a film by the given certificate', (done) => {
-          let film = new Film(
-            {
-              title: "Pulp Fiction",
-              writer: "Quentin Tarantino",
-              director: "Quentin Tarantino",
-              starring: "John Travolta, Samual L. Jackson",
-              genre: "crime",
-              country: "USA",
-              year: 1994,
-              language: "English",
-              runtime: 154,
-              certificate: 18,
-              synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
-              poster: "Pulpfiction.jpeg"
-             }
-            );
+          let film = new Film(pulpFiction);
           film.save((err, film) => {
               chai.request(server)
               .get('/movieApp/films/certificate/' + film.certificate)
@@ -337,22 +283,7 @@ describe('Integration Tests', () => {
  */
  describe('/PUT/:id film', () => {
      it('it should UPDATE a film given the id', (done) => {
-       let film = new Film(
-         {
-           title: "The Godfather",
-           writer: "Mario Puzo",
-           director: "Francis Ford Copolla",
-           starring: "Al Pacino, Marlon Brando",
-           genre: "crime",
-           country: "USA",
-           year: 1971,
-           language: "English",
-           runtime: 120,
-           certificate: 18,
-           synopsis: "Organised crime in 1960s New York",
-           poster: "Goldfather.jpeg"
-         }
-       )
+       let film = new Film(pulpFiction);
        film.save((err, film) => {
                chai.request(server)
                .put('/movieApp/films/' + film.id)
@@ -386,22 +317,7 @@ describe('Integration Tests', () => {
   */
   describe('/DELETE/:id film', () => {
       it('it should DELETE a film given the id', (done) => {
-        let film = new Film(
-          {
-          title: "The Godfather",
-          writer: "Mario Puzo",
-          director: "Francis Ford Copolla",
-          starring: "Al Pacino, Marlon Brando",
-          genre: "crime",
-          country: "USA",
-          year: 1971,
-          language: "English",
-          runtime: 120,
-          certificate: 18,
-          synopsis: "Organised crime in 1960s New York",
-          poster: "Goldfather.jpeg"
-        }
-      )
+        let film = new Film(pulpFiction);
         film.save((err, film) => {
                 chai.request(server)
                 .delete('/movieApp/films/' + film.id)
