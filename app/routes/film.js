@@ -122,14 +122,17 @@ function getFilmByCertificate(req, res, next) {
  */
 function deleteFilm(req, res, next) {
   Film.findById({_id: req.params.id}, (err, film) => {
-      if(err) res.send(err);
-      if(film == null){
+      if(err) {
+          res.status(400).send(err);
+      }
+      else if(film == null){
         res.status(404).json({ message: "Film not found"});
         return next();
-      }
+      }else{
       Film.remove({_id : req.params.id}, (err, result) => {
           res.json({ message: "Film successfully deleted!", result });
       });
+    }
   });
 }
 
