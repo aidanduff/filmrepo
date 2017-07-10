@@ -70,6 +70,16 @@ describe('Integration Tests', () => {
               done();
             });
       });
+      it('it should return a Film not Found message when no films have been added', (done) => {
+        chai.request(server)
+            .get('/movieApp/films')
+            .end((err, res) => {
+                res.should.have.status(204);
+                //res.body.should.be.a('object');
+                //res.body.length.should.be.eql(0);
+              done();
+            });
+      });
   });
 
   /*
@@ -99,6 +109,33 @@ describe('Integration Tests', () => {
                 res.body.should.have.property('errors');
                 res.body.errors.should.have.property('runtime');
                 res.body.errors.runtime.should.have.property('kind').eql('required');
+              done();
+            });
+      });
+      it('it should not POST a with wrong data type in a field', (done) => {
+        let film = {
+          title: "Pulp Fiction",
+          writer: "Quentin Tarantino",
+          director: "Quentin Tarantino",
+          starring: "John Travolta, Samual L. Jackson",
+          genre: "crime",
+          country: "USA",
+          year: 1994,
+          language: "English",
+          runtime: "One five four",
+          certificate: 18,
+          synopsis: "Two hit men are on a mission to retrieve a stolen suitcase",
+          poster: "Pulpfiction.jpeg"
+        }
+        chai.request(server)
+            .post('/movieApp/films')
+            .send(film)
+            .end((err, res) => {
+                res.should.have.status(400);
+                res.body.should.be.a('object');
+                res.body.should.have.property('errors');
+                res.body.errors.should.have.property('runtime');
+                //res.body.errors.runtime.should.have.property('kind').eql('required');
               done();
             });
       });
@@ -157,6 +194,36 @@ describe('Integration Tests', () => {
           });
 
         });
+        it('it should not GET a film with the wrong id', (done) => {
+          let film = new Film(pulpFiction);
+          film.save((err, pulpFiction) => {
+              chai.request(server)
+              .get('/movieApp/films/' + "5349b4ddd2781d08c09890f4")
+              .send(pulpFiction)
+              .end((err, res) => {
+                res.should.have.status(404);
+                res.body.should.be.a('object');
+                res.body.should.have.property('message').eql('Film not found');
+                done();
+              });
+          });
+
+        });
+        it('it should not GET a film with the id in the incorrect format', (done) => {
+          let film = new Film(pulpFiction);
+          film.save((err, pulpFiction) => {
+              chai.request(server)
+              .get('/movieApp/films/' + "5349b4ddd2781d08c09890f")
+              .send(pulpFiction)
+              .end((err, res) => {
+                res.should.have.status(400);
+                res.body.should.be.a('object');
+                res.body.should.have.property('name').eql('CastError');
+                done();
+              });
+          });
+
+        });
     });
 
     describe('/GET/title/:title film', () => {
@@ -187,6 +254,36 @@ describe('Integration Tests', () => {
           });
 
         });
+        it('it should not GET a film with an incorrectly entered title', (done) => {
+          let film = new Film(pulpFiction);
+          film.save((err, pulpFiction) => {
+              chai.request(server)
+              .get('/movieApp/films/title/' + "testFilm")
+              .send(pulpFiction)
+              .end((err, res) => {
+                res.should.have.status(404);
+                res.body.should.be.a('object');
+                res.body.should.have.property('message').eql('Film not found');
+                done();
+              });
+          });
+
+        });
+        // it('it should not GET a film by title with no title specified', (done) => {
+        //   let film = new Film(pulpFiction);
+        //   film.save((err, pulpFiction) => {
+        //       chai.request(server)
+        //       .get('/movieApp/films/title/' + "")
+        //       .send(pulpFiction)
+        //       .end((err, res) => {
+        //         res.should.have.status(400);
+        //         res.body.should.be.a('object');
+        //         res.body.should.have.property('name').eql('CastError');
+        //         done();
+        //       });
+        //   });
+        //
+        // });
     });
 
     describe('/GET/genre/:genre film', () => {
@@ -212,6 +309,21 @@ describe('Integration Tests', () => {
                   res.body[0].should.have.property('synopsis');
                   res.body[0].should.have.property('poster');
                   res.body[0].should.have.property('_id');
+                done();
+              });
+          });
+
+        });
+        it('it should not GET a film with an incorrectly entered genre', (done) => {
+          let film = new Film(pulpFiction);
+          film.save((err, pulpFiction) => {
+              chai.request(server)
+              .get('/movieApp/films/genre/' + "test")
+              .send(pulpFiction)
+              .end((err, res) => {
+                res.should.have.status(404);
+                res.body.should.be.a('object');
+                res.body.should.have.property('message').eql('Film not found');
                 done();
               });
           });
@@ -247,6 +359,36 @@ describe('Integration Tests', () => {
           });
 
         });
+        it('it should not GET a film with an incorrectly entered year', (done) => {
+          let film = new Film(pulpFiction);
+          film.save((err, pulpFiction) => {
+              chai.request(server)
+              .get('/movieApp/films/year/' + 1)
+              .send(pulpFiction)
+              .end((err, res) => {
+                res.should.have.status(404);
+                res.body.should.be.a('object');
+                res.body.should.have.property('message').eql('Film not found');
+                done();
+              });
+          });
+
+        });
+        it('it should not GET a film with a year in the wrong format', (done) => {
+          let film = new Film(pulpFiction);
+          film.save((err, pulpFiction) => {
+              chai.request(server)
+              .get('/movieApp/films/year/' + "test")
+              .send(pulpFiction)
+              .end((err, res) => {
+                res.should.have.status(400);
+                res.body.should.be.a('object');
+                res.body.should.have.property('name').eql('CastError');
+                done();
+              });
+          });
+
+        });
     });
 
     describe('/GET/certificate/:certificate film', () => {
@@ -272,6 +414,36 @@ describe('Integration Tests', () => {
                   res.body[0].should.have.property('synopsis');
                   res.body[0].should.have.property('poster');
                   res.body[0].should.have.property('_id');
+                done();
+              });
+          });
+
+        });
+        it('it should not GET a film with an incorrectly entered certificate', (done) => {
+          let film = new Film(pulpFiction);
+          film.save((err, pulpFiction) => {
+              chai.request(server)
+              .get('/movieApp/films/certificate/' + 1)
+              .send(pulpFiction)
+              .end((err, res) => {
+                res.should.have.status(404);
+                res.body.should.be.a('object');
+                res.body.should.have.property('message').eql('Film not found');
+                done();
+              });
+          });
+
+        });
+        it('it should not GET a film with a certificate in the wrong format', (done) => {
+          let film = new Film(pulpFiction);
+          film.save((err, pulpFiction) => {
+              chai.request(server)
+              .get('/movieApp/films/certificate/' + "test")
+              .send(pulpFiction)
+              .end((err, res) => {
+                res.should.have.status(400);
+                res.body.should.be.a('object');
+                res.body.should.have.property('name').eql('CastError');
                 done();
               });
           });
@@ -311,6 +483,36 @@ describe('Integration Tests', () => {
                });
          });
      });
+     it('it should not PUT a film with the wrong id', (done) => {
+       let film = new Film(pulpFiction);
+       film.save((err, pulpFiction) => {
+           chai.request(server)
+           .put('/movieApp/films/' + "5349b4ddd2781d08c09890f4")
+           .send(pulpFiction)
+           .end((err, res) => {
+             res.should.have.status(404);
+             res.body.should.be.a('object');
+             res.body.should.have.property('message').eql('Film not found');
+             done();
+           });
+       });
+
+     });
+     it('it should not PUT a film with the id in the incorrect format', (done) => {
+       let film = new Film(pulpFiction);
+       film.save((err, pulpFiction) => {
+           chai.request(server)
+           .put('/movieApp/films/' + "5349b4ddd2781d08c09890f")
+           .send(pulpFiction)
+           .end((err, res) => {
+             res.should.have.status(400);
+             res.body.should.be.a('object');
+             res.body.should.have.property('name').eql('CastError');
+             done();
+           });
+       });
+
+     });
  });
  /*
   * Test the /DELETE/:id route
@@ -330,6 +532,36 @@ describe('Integration Tests', () => {
                   done();
                 });
           });
+      });
+      it('it should not DELETE a film with the wrong id', (done) => {
+        let film = new Film(pulpFiction);
+        film.save((err, pulpFiction) => {
+            chai.request(server)
+            .delete('/movieApp/films/' + "5349b4ddd2781d08c09890f4")
+            .send(pulpFiction)
+            .end((err, res) => {
+              res.should.have.status(404);
+              res.body.should.be.a('object');
+              res.body.should.have.property('message').eql('Film not found');
+              done();
+            });
+        });
+
+      });
+      it('it should not DELETE a film with the id in the incorrect format', (done) => {
+        let film = new Film(pulpFiction);
+        film.save((err, pulpFiction) => {
+            chai.request(server)
+            .delete('/movieApp/films/' + "5349b4ddd2781d08c09890f")
+            .send(pulpFiction)
+            .end((err, res) => {
+              res.should.have.status(400);
+              res.body.should.be.a('object');
+              res.body.should.have.property('name').eql('CastError');
+              done();
+            });
+        });
+
       });
   });
 });
