@@ -59,14 +59,14 @@ describe('Integration Tests', () => {
                 res.body.film.should.have.property('certificate');
                 res.body.film.should.have.property('synopsis');
                 res.body.film.should.have.property('poster');
-              done();
+              //done();
             });
         chai.request(server)
             .get('/movieApp/films')
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('array');
-                res.body.length.should.be.eql(0);
+                res.body.length.should.be.eql(1);
               done();
             });
       });
