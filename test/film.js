@@ -273,7 +273,7 @@ describe('Integration Tests', () => {
         //   let film = new Film(pulpFiction);
         //   film.save((err, pulpFiction) => {
         //       chai.request(server)
-        //       .get('/movieApp/films/title/' + "")
+        //       .get('/movieApp/films/title/' + Number(1))
         //       .send(pulpFiction)
         //       .end((err, res) => {
         //         res.should.have.status(400);
