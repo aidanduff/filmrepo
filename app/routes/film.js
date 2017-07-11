@@ -151,8 +151,10 @@ function updateFilm(req, res, next) {
       //If no errors, send it back to the client
       else{
         Object.assign(film, req.body).save((err, film) => {
-            if(err) res.status(400).send(err);
-            //return next();
+            if(err){
+              res.status(400).send(err);
+              return next();
+            }
             res.json({ message: 'Film updated!', film });
         });
       }
