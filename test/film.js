@@ -29,6 +29,7 @@ mongoose.Promise = require('bluebird');
 
 chai.use(chaiHttp);
 //Our parent block
+
 describe('Integration Tests', () => {
     beforeEach((done) => { //Before each test we empty the database
         Film.remove({}, (err) => {
@@ -38,6 +39,7 @@ describe('Integration Tests', () => {
 /*
   * Test the /GET route
   */
+
   describe('/GET film', () => {
       it('it should GET all the films', (done) => {
         chai.request(server)

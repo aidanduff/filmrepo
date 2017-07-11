@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 
 let Film = require('../app/models/film');
 
-describe('Model Tests', function() {
+describe('Model Validation Tests', function() {
     it('should be invalid if title field is empty', function(done) {
         let film = new Film({
           writer: "Quentin Tarantino",
