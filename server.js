@@ -2,6 +2,7 @@ let express = require('express');
 let app = express();
 let mongoose = require('mongoose');
 let morgan = require('morgan');
+const cors = require('cors');
 let bodyParser = require('body-parser');
 let port = 3000;
 let film = require('./app/routes/film');
@@ -26,6 +27,8 @@ if(config.util.getEnv('NODE_ENV') !== 'test') {
     //use morgan to log at command line
     app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
 }
+
+app.use(cors());
 
 //parse application/json and look for raw text
 app.use(bodyParser.json());
