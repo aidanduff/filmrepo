@@ -1,19 +1,25 @@
 <div *ngIf="movie" class="container">
-  <h2 class="page-header">{{movie.title}}</h2>
+    <br>
+  <h2 class="page-header">{{movie.title}} ({{movie.year}})</h2>
     <div class="row">
         <div class="col-md-4">
-            <li class="list-group-item thumbnail"><img src={{movie.poster}} ></li>
+            <img src="../../assets/img/{{movie.poster}}" class="thumbnail" >
         </div>
         <div class="col-md-8">
-            <li class="list-group-item">Plot: {{movie.synopsis}}</li>
-            <li class="list-group-item">Starring: {{movie.starring}}</li>
-            <li class="list-group-item">Directed by By: {{movie.director}}</li>
-            <li class="list-group-item">Written By: {{movie.writer}}</li>
-            <li class="list-group-item">Released: {{movie.year}}</li>
-            <li class="list-group-item">Genre: {{movie.genre}}</li>
-            <li class="list-group-item">Certificate: {{movie.certificate}}</li>
-            <li class="list-group-item">Language: {{movie.language}}</li>
-            <li class="list-group-item">Runtime: {{movie.runtime}}</li>
+            <h4>{{movie.synopsis}}</h4><br>
+            <p>Starring: {{movie.starring}}</p>
+            <p>Directed by By: {{movie.director}}</p>
+            <p>Written By: {{movie.writer}}</p>
+            <p>Released: {{movie.year}}</p>
+            <p>Genre: {{movie.genre}}</p>
+            <p>Certificate: {{movie.certificate}}</p>
+            <p>Language: {{movie.language}}</p>
+            <p>Runtime: {{movie.runtime}}</p>
+            <br>
+            <hr>
+            <a [routerLink]="['/edit-movie/'+movie._id]" class="btn btn-success btn-lg">Edit</a>
         </div>
     </div>
 </div>
+
+
