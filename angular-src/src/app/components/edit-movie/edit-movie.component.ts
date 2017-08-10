@@ -28,7 +28,7 @@ export class EditMovieComponent implements OnInit {
 
   constructor(public getallService:GetallService,
               public router:Router,
-              public route:ActivatedRoute,) { }
+              public route:ActivatedRoute) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];

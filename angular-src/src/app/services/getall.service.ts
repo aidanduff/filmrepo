@@ -21,11 +21,21 @@ export class GetallService {
   }
 
   updateMovie(id:string, movie:Movie){
-    console.log(id);
-    console.log(movie);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.put('http://localhost:3000/movieApp/films/'+id, movie, { headers: headers }).map((res: Response) => res.json()).subscribe(movie => this.movie = movie);
+  }
+
+  addMovie(movie:Movie){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/movieApp/films/', movie, { headers: headers }).map((res: Response) => res.json()).subscribe(movie => this.movie = movie);
+
+  }
+
+  deleteMovie(id:string){
+    return this.http.delete('http://localhost:3000/movieApp/films/'+id).map( res => res.json());
+    
   }
 }
 

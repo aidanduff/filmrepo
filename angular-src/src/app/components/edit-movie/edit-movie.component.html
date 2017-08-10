@@ -14,13 +14,12 @@
   <div class="card-block">
     <form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
          <div class="form-group">
-          <label for="title">Title</label>
+          <label for="title">Title: </label>
           <input type="text"
           class="form-control"
           [(ngModel)]="movie.title"
           name="title"
-          #movieTitle="ngModel"
-          >
+          #movieTitle="ngModel">
       </div>
         <div class="form-group">
           <label for="writer">Writer</label>
