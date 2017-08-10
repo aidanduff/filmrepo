@@ -12,7 +12,7 @@
     Edit Movie
   </div>
   <div class="card-block">
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
          <div class="form-group">
           <label for="title">Title</label>
           <input type="text"
@@ -20,6 +20,105 @@
           [(ngModel)]="movie.title"
           name="title"
           #movieTitle="ngModel"
+          >
+      </div>
+        <div class="form-group">
+          <label for="writer">Writer</label>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="movie.writer"
+          name="writer"
+          #movieWriter="ngModel"
+          >
+      </div>
+        <div class="form-group">
+          <label for="director">Director</label>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="movie.director"
+          name="director"
+          #movieDirector="ngModel"
+          >
+      </div>
+        <div class="form-group">
+          <label for="starring">Starring</label>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="movie.starring"
+          name="starring"
+          #movieStarring="ngModel"
+          >
+      </div>
+        <div class="form-group">
+          <label for="genre">Genre</label>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="movie.genre"
+          name="genre"
+          #movieGenre="ngModel"
+          >
+      </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="movie.country"
+          name="country"
+          #movieCountry="ngModel"
+          >
+      </div>
+        <div class="form-group">
+          <label for="year">Year</label>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="movie.year"
+          name="year"
+          #movieYear="ngModel"
+          >
+      </div>
+        <div class="form-group">
+          <label for="language">Language</label>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="movie.language"
+          name="language"
+          #movieLanguage="ngModel"
+          >
+      </div>
+        <div class="form-group">
+          <label for="runtime">Runtime</label>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="movie.runtime"
+          name="runtime"
+          #movieRuntime="ngModel"
+          >
+      </div>
+        <div class="form-group">
+          <label for="Certificate">certificate</label>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="movie.certificate"
+          name="certificate"
+          #movieCertificate="ngModel"
+          >
+      </div>
+        <div class="form-group">
+          <label for="synopsis">Synopsis</label>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="movie.synopsis"
+          name="synopsis"
+          #movieSynopsis="ngModel"
+          >
+      </div>
+        <div class="form-group">
+          <label for="poster">Poster</label>
+          <input type="text"
+          class="form-control"
+          [(ngModel)]="movie.poster"
+          name="poster"
+          #moviePoster="ngModel"
           >
       </div>
       <input type="submit" class="btn btn-primary btn-block" value="Submit">

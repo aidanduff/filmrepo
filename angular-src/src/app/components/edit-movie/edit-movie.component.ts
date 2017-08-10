@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GetallService } from '../../services/getall.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Movie } from '../../models/Movie';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-movie',
@@ -9,8 +11,19 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 export class EditMovieComponent implements OnInit {
   id:string;
-  movie:Object = {
-    title:''
+  movie:Movie = {
+    title:'',
+    writer:'',
+    director:'',
+    starring:'',
+    genre:'',
+    country:'',
+    year:0,
+    language:'',
+    runtime:0,
+    certificate:0,
+    synopsis:'',
+    poster:''
   }
 
   constructor(public getallService:GetallService,
@@ -19,12 +32,16 @@ export class EditMovieComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    console.log(this.id);
+    //console.log(this.id);
 
     this.getallService.getMovie(this.id).subscribe(movie => {
     this.movie = movie;
-    console.log(this.movie);
     });
   }
 
+  onSubmit({value}:{value:Movie}){
+    //console.log(value);
+    this.getallService.updateMovie(this.id, value);
+
+  }
 }

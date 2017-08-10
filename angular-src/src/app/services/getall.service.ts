@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
+import { Movie } from '../models/Movie';
 
 @Injectable()
 export class GetallService {
+  movie:Movie;
+  id:String;
   
   constructor(private http:Http) { }
 
@@ -14,6 +18,14 @@ export class GetallService {
   getMovie(id:string){
     return this.http.get('http://localhost:3000/movieApp/films/'+id).map( res => res.json());
     
+  }
+
+  updateMovie(id:string, movie:Movie){
+    console.log(id);
+    console.log(movie);
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put('http://localhost:3000/movieApp/films/'+id, movie, { headers: headers }).map((res: Response) => res.json()).subscribe(movie => this.movie = movie);
   }
 }
 
