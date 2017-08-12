@@ -1,8 +1,10 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <div style="margin: auto; max-width: 1000px; margin-top:50px">
     <data-table id="films-grid"
         headerTitle="Films"
-        [items]="films"
-        [itemCount]="filmCount"
+        [items]="movies"
+        [itemCount]="movieCount"
         (reload)="reloadFilms($event)"
 
         [limit]="9"
@@ -18,7 +20,7 @@
         [selectOnRowClick]="true"
         >
         <template #dataTableExpand let-item="item">
-            <div [textContent]="item.description" style="padding: 5px; color: gray"></div>
+            <div [textContent]="item.synopsis" style="padding: 5px; color: gray"></div>
         </template>
         <data-table-column
             [property]="'title'"
@@ -31,7 +33,7 @@
             [sortable]="true">
         </data-table-column>
         <data-table-column
-            [property]="'rating'"
+            [property]="'certificate'"
             [header]="'Rating'"
             [sortable]="true"
             [cellColors]="cellColor">

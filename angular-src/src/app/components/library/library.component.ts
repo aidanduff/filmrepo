@@ -1,6 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { DataTable, DataTableTranslations, DataTableResource } from 'angular-4-data-table';
-import { films}  from './data';
+import { GetallService } from "../../services/getall.service";
+import { Router } from '@angular/router';
+import { Movie } from '../../models/Movie';
 
 @Component({
   selector: 'app-library',
@@ -9,18 +11,25 @@ import { films}  from './data';
 })
 export class LibraryComponent{
 
-    filmResource = new DataTableResource(films);
-    films = [];
-    filmCount = 0;
+    movies:[Object];
+    movieCount = 0;
 
     @ViewChild(DataTable) filmsTable;
 
-    constructor() {
-        this.filmResource.count().then(count => this.filmCount = count);
-    }
+    constructor(private getallService:GetallService,
+              private router:Router){
+
+    } 
+
+    // ngOnInit() {
+    // this.getallService.getMovies().subscribe(movies => {
+    //   this.movies= movies;
+    // });
 
     reloadFilms(params) {
-        this.filmResource.query(params).then(films => this.films = films);
+        this.getallService.getMovies().subscribe(movies => {
+        this.movies= movies;
+        });
     }
 
     cellColor(car) {
