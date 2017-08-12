@@ -104,12 +104,13 @@
       </div>
         <div class="form-group">
           <label for="synopsis">Synopsis</label>
-          <input type="text"
+          
+          <textarea
           class="form-control"
           [(ngModel)]="movie.synopsis"
           name="synopsis"
           #movieSynopsis="ngModel"
-          >
+          ></textarea>
       </div>
         <div class="form-group">
           <label for="poster">Poster</label>
