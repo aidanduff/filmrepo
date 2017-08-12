@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-//import { DataTableModule } from 'angular-4-data-table';
+import { DataTableModule } from 'angular-4-data-table';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -13,9 +13,10 @@ import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { EditMovieComponent } from './components/edit-movie/edit-movie.component';
 import { FullCatalogueComponent } from './components/full-catalogue/full-catalogue.component';
 import { MovieComponent } from './components/movie/movie.component';
+import { LibraryComponent } from './components/library/library.component';
 
 import { GetallService} from "./services/getall.service";
-import { FullLibraryComponent } from './components/full-library/full-library.component';
+
 
 const appRoutes:Routes =[
   {path:'', component: HomeComponent},
@@ -24,7 +25,7 @@ const appRoutes:Routes =[
   {path:'edit-movie/:id', component: EditMovieComponent},
   {path:'full-catalogue', component: FullCatalogueComponent},
   {path:'movie/:id', component: MovieComponent},
-  {path:'library', component: FullLibraryComponent}
+  {path:'library', component: LibraryComponent}
 
 ]
 
@@ -38,13 +39,13 @@ const appRoutes:Routes =[
     EditMovieComponent,
     FullCatalogueComponent,
     MovieComponent,
-    FullLibraryComponent
+    LibraryComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-   // DataTableModule,
+    DataTableModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [GetallService],

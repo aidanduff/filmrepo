@@ -1,17 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
-import { DataTable, DataTableTranslations, DataTableResource } from 'angular-2-data-table';
-//import { films } from './full-library-data.component';
+import { DataTable, DataTableTranslations, DataTableResource } from 'angular-4-data-table';
+import { films}  from './data';
 
 @Component({
-  selector: 'app-full-library',
-  templateUrl: './full-library.component.html',
-  styleUrls: ['./full-library.component.css']
+  selector: 'app-library',
+  templateUrl: './library.component.html',
+  styleUrls: ['./library.component.css']
 })
-export class FullLibraryComponent{
+export class LibraryComponent{
 
-  films = [];
-  filmResource = new DataTableResource(this.films);
-
+    filmResource = new DataTableResource(films);
+    films = [];
     filmCount = 0;
 
     @ViewChild(DataTable) filmsTable;

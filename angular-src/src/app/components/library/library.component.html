@@ -1,6 +1,3 @@
-<!-- <p>
-  full-library works!
-</p>
 <div style="margin: auto; max-width: 1000px; margin-top:50px">
     <data-table id="films-grid"
         headerTitle="Films"
@@ -8,7 +5,7 @@
         [itemCount]="filmCount"
         (reload)="reloadFilms($event)"
 
-        [limit]="8"
+        [limit]="9"
         [sortBy]="'rating'"
         [sortAsc]="false"
 
@@ -49,4 +46,4 @@
         <span *ngIf="filmsTable.selectedRow == null"><i>No item selected</i></span>
         <span [textContent]="filmsTable.selectedRow && filmsTable.selectedRow.item.title"></span>
     </div>
-</div> -->
+</div>
