@@ -2,11 +2,16 @@
 <div *ngIf="movies?.length > 0;" class="card-deck">
   <br>
   <div *ngFor="let movie of movies" class="card col-md-4" style="width: 20rem; margin-bottom: 1em;">
-    <img class="card-img-top" src="../../assets/img/{{movie.poster}}" alt="Card image cap">
-    <div class="card-block">
-      <h4 class="card-title">{{movie.title}}</h4>
-      <p class="card-text">Starring {{movie.starring}}<br>{{movie.genre}}<br>{{movie.year}}</p>
-      <p class="card-text"><small class="text-muted">{{movie.certificate}}</small></p>
-    </div>
+     <div class="card card-inverse card-img-top">
+      <img class="card-img" src="../../assets/img/{{movie.poster}}" alt="Card image cap">
+      <div class="card-img-overlay">
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <h4 class="card-title">{{movie.title}}</h4>
+        <p class="card-text">Starring {{movie.starring}}<br>{{movie.genre}}<br>{{movie.year}}
+        <a [routerLink]="['/movie/'+movie._id]" type="" href="" class="btn btn-secondary btn-sm float-right">Details</a></p>
+        
+        <!-- <p class="card-text"><small class="text-muted">{{movie.certificate}}</small></p> -->
+      </div>
+    </div> 
   </div>
 </div>
