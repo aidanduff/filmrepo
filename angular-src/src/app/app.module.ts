@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { DataTableModule } from 'angular-4-data-table';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -14,8 +15,11 @@ import { EditMovieComponent } from './components/edit-movie/edit-movie.component
 import { FullCatalogueComponent } from './components/full-catalogue/full-catalogue.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { LibraryComponent } from './components/library/library.component';
+import { SandboxComponent } from './components/sandbox/sandbox.component';
+
 
 import { GetallService} from "./services/getall.service";
+
 
 
 const appRoutes:Routes =[
@@ -25,7 +29,8 @@ const appRoutes:Routes =[
   {path:'edit-movie/:id', component: EditMovieComponent},
   {path:'full-catalogue', component: FullCatalogueComponent},
   {path:'movie/:id', component: MovieComponent},
-  {path:'library', component: LibraryComponent}
+  {path:'library', component: LibraryComponent},
+  {path:'sandbox', component: SandboxComponent}
 
 ]
 
@@ -39,13 +44,15 @@ const appRoutes:Routes =[
     EditMovieComponent,
     FullCatalogueComponent,
     MovieComponent,
-    LibraryComponent
+    LibraryComponent,
+    SandboxComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     DataTableModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [GetallService],

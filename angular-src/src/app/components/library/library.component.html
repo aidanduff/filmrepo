@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"> -->
+ 
+
 
 <div style="margin: auto; max-width: 1000px; margin-top:50px">
     <data-table id="films-grid"
@@ -22,6 +25,11 @@
         <template #dataTableExpand let-item="item">
             <div [textContent]="item.synopsis" style="padding: 5px; color: gray"></div>
         </template>
+        <data-table-column
+            [property]="'poster'"
+            [header]="'Poster'"
+            [sortable]="true">
+        </data-table-column>
         <data-table-column
             [property]="'title'"
             [header]="'Title'"
