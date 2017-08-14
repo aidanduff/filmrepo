@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { DataTableModule } from 'angular-4-data-table';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -19,6 +21,7 @@ import { SandboxComponent } from './components/sandbox/sandbox.component';
 
 
 import { GetallService} from "./services/getall.service";
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 
@@ -30,7 +33,8 @@ const appRoutes:Routes =[
   {path:'full-catalogue', component: FullCatalogueComponent},
   {path:'movie/:id', component: MovieComponent},
   {path:'library', component: LibraryComponent},
-  {path:'sandbox', component: SandboxComponent}
+  {path:'sandbox', component: SandboxComponent},
+  {path:'carousel', component: CarouselComponent},
 
 ]
 
@@ -45,13 +49,16 @@ const appRoutes:Routes =[
     FullCatalogueComponent,
     MovieComponent,
     LibraryComponent,
-    SandboxComponent
+    SandboxComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     DataTableModule,
+    AngularFontAwesomeModule,
+    Ng2CarouselamosModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],

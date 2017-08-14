@@ -7,6 +7,10 @@
     background-color: #E4EDF9;
 }
 
+.modal-title{
+    text-align: left;
+}
+
  /* :host /deep/ .input-group-addon, .input-group-btn, .input-group .form-control {
     display: -webkit-box;
     display: -ms-flexbox; */

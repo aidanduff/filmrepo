@@ -1,17 +1,17 @@
-<br><br>
+ <br><br>
 <div *ngIf="movies?.length > 0;" class="card-deck">
   <br>
-  <div *ngFor="let movie of movies" class="card col-md-4" style="width: 20rem; margin-bottom: 1em;">
-     <div class="card card-inverse card-img-top">
-      <img class="card-img" src="../../assets/img/{{movie.poster}}" alt="Card image cap">
-      <div class="card-img-overlay">
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <h4 class="card-title">{{movie.title}}</h4>
-        <p class="card-text">Starring {{movie.starring}}<br>{{movie.genre}}<br>{{movie.year}}
-        <a [routerLink]="['/movie/'+movie._id]" type="" href="" class="btn btn-secondary btn-sm float-right">Details</a></p>
-        
-        <!-- <p class="card-text"><small class="text-muted">{{movie.certificate}}</small></p> -->
-      </div>
-    </div> 
+  <div class="row">
+    <div *ngFor="let movie of movies" style="margin-bottom: 1em;">
+      <div class="card card-inverse img-fluid">
+        <img class="card-img" src="../../assets/img/{{movie.poster}}" alt="Card image cap">
+        <div class="card-img-overlay">
+          <br><br><br><br><br><br><br><br><br><br>
+          <h4 class="card-title">{{movie.title}}</h4>
+          <p class="card-text">Starring {{movie.director}}<br>{{movie.genre}}<br>{{movie.year}}
+          <a [routerLink]="['/movie/'+movie._id]" type="" href="" class="btn btn-secondary btn-sm float-right">Details</a></p>
+        </div>
+     </div>  
   </div>
+ </div> 
 </div>

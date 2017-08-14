@@ -42,6 +42,7 @@ export class EditMovieComponent implements OnInit {
   onSubmit({value}:{value:Movie}){
     //console.log(value);
     this.getallService.updateMovie(this.id, value);
+    this.router.navigate(['/movie/'+this.id]);
 
   }
 }

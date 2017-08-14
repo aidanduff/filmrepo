@@ -1,30 +1,36 @@
-a {
- -webkit-transition: .25s all;
- transition: .25s all;
+#container {
+    width: 100%;
+    margin: 5em auto;
+    padding: 0;
+    background:#fff;
 }
+
+.items {
+    max-width:300px;
+    height:384px;
+    background:#ECECEC;
+}
+
+/* #left, #right { 
+    margin: 30px;
+} */
+
+body {
+    background: #ECECEC;
+}
+
 .card {
  /* overflow: hidden; */
  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
  -webkit-transition: .25s box-shadow;
  transition: .25s box-shadow;
 }
-.card:focus, .card:hover {
+/* .card:focus, .card:hover {
  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-}
+} */
 .card-inverse .card-img-overlay {
  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, rgba(0,0,0,0)), 
                 color-stop(77%, rgba(0,0,0,1)), color-stop(99%, rgba(0,0,0,1)), color-stop(100%, rgba(0,128,128,1)));
  /* background-color: rgba(51, 51, 51, 0.85); */
  border-color: rgba(51, 51, 51, 0.85);
-}
-
-
-/* equal card height */
-.row-equal > div[class*='col-'] {
-    display: flex;
-    flex: 1 0 auto;
-}
-
-.row-equal .card {
-   width: 100%;
 }
