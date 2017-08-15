@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 })
 export class DashboardComponent implements OnInit {
   movies:any[];
+  picture:string;
 
   constructor(private getallService:GetallService,
               private router:Router) { }
@@ -16,6 +17,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.getallService.getMovies().subscribe(movies => {
       this.movies= movies;
+      this.picture = '../../../assets/img/darkback.png';
+      // this.picture = '../../../assets/img/redback.jpg';
     });
   }
 

@@ -18,10 +18,13 @@ import { FullCatalogueComponent } from './components/full-catalogue/full-catalog
 import { MovieComponent } from './components/movie/movie.component';
 import { LibraryComponent } from './components/library/library.component';
 import { SandboxComponent } from './components/sandbox/sandbox.component';
-
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { OtherboxComponent } from './components/otherbox/otherbox.component';
 
 import { GetallService} from "./services/getall.service";
-import { CarouselComponent } from './components/carousel/carousel.component';
+import { BgimageComponent } from './components/bgimage/bgimage.component';
+
+
 
 
 
@@ -35,6 +38,8 @@ const appRoutes:Routes =[
   {path:'library', component: LibraryComponent},
   {path:'sandbox', component: SandboxComponent},
   {path:'carousel', component: CarouselComponent},
+  {path:'otherbox', component: OtherboxComponent},
+  {path:'bgimg', component: BgimageComponent}
 
 ]
 
@@ -50,7 +55,9 @@ const appRoutes:Routes =[
     MovieComponent,
     LibraryComponent,
     SandboxComponent,
-    CarouselComponent
+    CarouselComponent,
+    OtherboxComponent,
+    BgimageComponent
   ],
   imports: [
     BrowserModule,
@@ -60,9 +67,10 @@ const appRoutes:Routes =[
     AngularFontAwesomeModule,
     Ng2CarouselamosModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    
   ],
-  providers: [GetallService],
+  providers: [GetallService, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

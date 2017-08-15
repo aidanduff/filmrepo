@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { GetallService } from "../../services/getall.service";
 import { Router } from "@angular/router";
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 @Component({
   selector: 'app-carousel',
@@ -9,6 +10,8 @@ import { Router } from "@angular/router";
 })
 export class CarouselComponent implements OnInit {
   movies: Array<any> = [];
+  id:String;
+  picture:string;
 
   constructor(private getallService:GetallService,
               private router:Router) {
@@ -17,7 +20,14 @@ export class CarouselComponent implements OnInit {
   ngOnInit() {
     this.getallService.getMovies().subscribe(movies => {
       this.movies= movies;
+      this.picture = '../../../assets/img/darkback.png';
+      // this.picture = '../../../assets/img/redback.jpg';
     });
   }
 
+  goToPage(value){
+    console.log(value);
+    this.router.navigate(['/movie/'+this.id]);
+
+  }
 }

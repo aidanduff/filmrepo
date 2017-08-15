@@ -1,17 +1,15 @@
-
-
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>MovieApp</title>
-  <base href="/">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-library></app-library>
-</body>
-</html>
+<!-- <div *ngIf="movies?.length > 0;" class="card-deck"> -->
+  <ngb-carousel *ngIf="movies?.length > 0;">
+    <ng-template ngbSlide *ngFor="let movie of movies" class="card-deck">
+       <div class="card card-inverse img-fluid">
+        <img class="card-img" src="../../assets/img/{{movie.poster}}" alt="Card image cap">
+        <div class="card-img-overlay">
+          <br><br><br><br><br><br><br><br><br><br>
+          <h4 class="card-title">{{movie.title}}</h4>
+          <p class="card-text">Starring {{movie.director}}<br>{{movie.genre}}<br>{{movie.year}}
+          <a [routerLink]="['/movie/'+movie._id]" type="" href="" class="btn btn-secondary btn-sm float-right">Details</a></p>
+        </div>
+     </div> 
+    </ng-template>
+  </ngb-carousel>
+<!-- </div> -->
