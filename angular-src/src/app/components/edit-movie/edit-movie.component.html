@@ -1,126 +1,127 @@
- <div class="row">
-  <div class="cold-md-6">
-    <a [routerLink]="['/movie/'+movie._id]" href="#" class="btn btn-link">Back to Movie</a>
-  </div>
-  <div class="cold-md-6">
-    
-  </div>
-</div>
-
  <div class="card">
   <div class="card-header">
     Edit Movie
   </div>
   <div class="card-block">
     <form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
-         <div class="form-group">
-          <label for="title">Title: </label>
+      <div class="form-group">
+          <label for="Id" class="left">ID: </label>
           <input type="text"
-          class="form-control"
+          class="form-control right"
+          [(ngModel)]="movie._id"
+          name="id"
+          #movieId="ngModel"
+          disabled="true">
+      </div>
+         <div class="form-group">
+          <label for="title" class="left" >Title: </label>
+          <input type="text"
+          class="form-control right"
           [(ngModel)]="movie.title"
           name="title"
           #movieTitle="ngModel">
       </div>
         <div class="form-group">
-          <label for="writer">Writer</label>
+          <label for="writer" class="left">Writer</label>
           <input type="text"
-          class="form-control"
+          class="form-control right"
           [(ngModel)]="movie.writer"
           name="writer"
           #movieWriter="ngModel"
           >
       </div>
         <div class="form-group">
-          <label for="director">Director</label>
+          <label for="director" class="left">Director</label>
           <input type="text"
-          class="form-control"
+          class="form-control right"
           [(ngModel)]="movie.director"
           name="director"
           #movieDirector="ngModel"
           >
       </div>
         <div class="form-group">
-          <label for="starring">Starring</label>
+          <label for="starring" class="left">Starring</label>
           <input type="text"
-          class="form-control"
+          class="form-control right"
           [(ngModel)]="movie.starring"
           name="starring"
           #movieStarring="ngModel"
           >
       </div>
         <div class="form-group">
-          <label for="genre">Genre</label>
+          <label for="genre" class="left">Genre</label>
           <input type="text"
-          class="form-control"
+          class="form-control right"
           [(ngModel)]="movie.genre"
           name="genre"
           #movieGenre="ngModel"
           >
       </div>
         <div class="form-group">
-          <label for="country">Country</label>
+          <label for="country" class="left">Country</label>
           <input type="text"
-          class="form-control"
+          class="form-control right"
           [(ngModel)]="movie.country"
           name="country"
           #movieCountry="ngModel"
           >
       </div>
         <div class="form-group">
-          <label for="year">Year</label>
+          <label for="year" class="left">Year</label>
           <input type="text"
-          class="form-control"
+          class="form-control right"
           [(ngModel)]="movie.year"
           name="year"
           #movieYear="ngModel"
           >
       </div>
         <div class="form-group">
-          <label for="language">Language</label>
+          <label for="language" class="left">Language</label>
           <input type="text"
-          class="form-control"
+          class="form-control right"
           [(ngModel)]="movie.language"
           name="language"
           #movieLanguage="ngModel"
           >
       </div>
         <div class="form-group">
-          <label for="runtime">Runtime</label>
+          <label for="runtime" class="left">Runtime</label>
           <input type="text"
-          class="form-control"
+          class="form-control right"
           [(ngModel)]="movie.runtime"
           name="runtime"
           #movieRuntime="ngModel"
           >
       </div>
         <div class="form-group">
-          <label for="Certificate">certificate</label>
+          <label for="Certificate" class="left">certificate</label>
           <input type="text"
-          class="form-control"
+          class="form-control right"
           [(ngModel)]="movie.certificate"
           name="certificate"
           #movieCertificate="ngModel"
           >
       </div>
         <div class="form-group">
-          <label for="synopsis">Synopsis</label>
+          <label for="synopsis" class="left">Synopsis</label>
           <input type="text"
-          class="form-control"
+          class="form-control right"
           [(ngModel)]="movie.synopsis"
           name="synopsis"
           #movieSynopsis="ngModel"
           >
       </div>
         <div class="form-group">
-          <label for="poster">Poster</label>
+          <label for="poster" class="left">Poster</label>
           <input type="text"
-          class="form-control"
+          class="form-control right"
           [(ngModel)]="movie.poster"
           name="poster"
           #moviePoster="ngModel"
           >
       </div>
-      <input type="submit" class="btn btn-primary btn-block" value="Submit">
+      <button type="button" class="btn btn-danger" (click)="onClose()">Close</button>
+      <input type="submit" class="btn btn-success" value="Submit">
     </form>
   </div>
 </div>  

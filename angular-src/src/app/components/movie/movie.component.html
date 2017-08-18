@@ -17,8 +17,8 @@
             <p>Runtime: {{movie.runtime}}</p>
             <br>
             <hr>
-            <a [routerLink]="['/edit-movie/'+movie._id]" class="btn btn-success btn-lg">Edit</a>
-            <button type= "button" class="btn btn-danger btn-lg" (click)= "onDeleteClick()">Delete</button>
+            <button type= "button" class="btn btn-success btn-lg" (click)= "openEdit(movie._id)">Edit</button>
+            <button type= "button" class="btn btn-danger btn-lg" (click)= "onDeleteClick(movie._id)">Delete</button>
         </div>
     </div>
 </div>

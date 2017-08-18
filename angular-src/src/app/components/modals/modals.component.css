@@ -1,0 +1,14 @@
+@media (min-width: 600px) {
+  .modal-xl {
+    width: 200%;
+   max-width:1200px;
+   
+  }
+
+  .modal-content {
+    width: 200%;
+   max-width:1200px;
+   position:absolute;
+   left:-50%;
+  }
+}

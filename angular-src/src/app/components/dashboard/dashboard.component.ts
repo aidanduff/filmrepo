@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { GetallService } from "../../services/getall.service";
 import { Router } from "@angular/router";
 
@@ -7,12 +7,14 @@ import { Router } from "@angular/router";
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
   movies:any[];
   picture:string;
 
   constructor(private getallService:GetallService,
-              private router:Router) { }
+              private router:Router
+            ) { }
 
   ngOnInit() {
     this.getallService.getMovies().subscribe(movies => {
@@ -21,5 +23,4 @@ export class DashboardComponent implements OnInit {
       // this.picture = '../../../assets/img/redback.jpg';
     });
   }
-
 }
