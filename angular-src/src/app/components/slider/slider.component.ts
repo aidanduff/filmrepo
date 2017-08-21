@@ -35,7 +35,7 @@ export class SliderComponent implements OnInit{
   public config: SwiperConfigInterface = {
     scrollbar: null,
     direction: 'horizontal',
-    slidesPerView: 4,
+    slidesPerView: 5,
     scrollbarHide: false,
     keyboardControl: true,
     mousewheelControl: true,

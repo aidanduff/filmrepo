@@ -7,7 +7,7 @@ import { DataTableModule } from 'angular-4-data-table';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { FileSelectDirective } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -26,6 +26,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { GetallService} from "./services/getall.service";
 import { BgimageComponent } from './components/bgimage/bgimage.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 
@@ -40,9 +41,9 @@ const appRoutes:Routes =[
   {path:'movie/:id', component: MovieComponent},
   {path:'library', component: LibraryComponent},
   {path:'sandbox', component: SandboxComponent},
-  {path:'carousel', component: CarouselComponent},
   {path:'bgimg', component: BgimageComponent},
-  {path:'slider', component: SliderComponent}
+  {path:'slider', component: SliderComponent},
+  {path:'upload', component: FileUploadComponent}
 ]
 const SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -66,7 +67,9 @@ const SWIPER_CONFIG: SwiperConfigInterface = {
     AddMovieModalContent,
     EditMovieModalContent,
     ModalsComponent,
-    SliderComponent
+    SliderComponent,
+    FileUploadComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
