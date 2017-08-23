@@ -1,5 +1,5 @@
 export interface Movie{
-    $key?:string;
+    _id?:string;
     title?:string;
     writer?:string;
     director?:string;

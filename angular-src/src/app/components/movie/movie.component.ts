@@ -36,9 +36,9 @@ export class MovieComponent implements OnInit {
                   this.id = this.activatedRoute.snapshot.params['id'];
                   this.getallService.getMovie(this.id).subscribe(movie => {
                   this.movie = movie;
-                  // this.getallService.getMovieByGenre(this.movie.genre).subscribe(moviesByGenre => {
-                  // this.moviesByGenre = moviesByGenre;
-                    // })
+                  //  this.getallService.getMovieByGenre(this.movie.genre).subscribe(moviesByGenre => {
+                  //  this.moviesByGenre = moviesByGenre;
+                  //  });
                   });
                  });
 
@@ -75,8 +75,9 @@ export class MovieComponent implements OnInit {
         this.getallService.deleteMovie(this.id).subscribe(movie => {
       this.movie = movie;
       });
-        this.router.navigate(['/']);
+        this.router.navigate(['/full-catalogue']);
       }
+      
     } 
     
     myInit(params){

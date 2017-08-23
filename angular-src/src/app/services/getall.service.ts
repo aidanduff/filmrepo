@@ -27,11 +27,16 @@ export class GetallService {
     return this.http.put('http://localhost:3000/movieApp/films/'+id, movie, { headers: headers }).map((res: Response) => res.json()).subscribe(movie => this.movie = movie);
   }
 
-  addMovie(movie:Movie){
+  // addMovie(movie:Movie){
+  //   let headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   return this.http.post('http://localhost:3000/movieApp/films/', movie, { headers: headers }).map((res: Response) => res.json()).subscribe(movie => this.movie = movie) => { this.res = res; console.log(res);});
+  // }
+
+  addMovie(movie:Movie): Observable<Movie>{
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/movieApp/films/', movie, { headers: headers }).map((res: Response) => res.json()).subscribe(movie => this.movie = movie);
-
+    return this.http.post('http://localhost:3000/movieApp/films/', movie, { headers: headers }).map((res: Response) => res.json());
   }
 
   deleteMovie(id:string){
@@ -41,7 +46,10 @@ export class GetallService {
 
   getMovieByGenre(genre:string){
     return this.http.get('http://localhost:3000/movieApp/films/genre/'+genre).map( res => res.json());
-    
+  }
+
+  getMovieByTitle(title:string){
+    return this.http.get('http://localhost:3000/movieApp/films/title/'+title).map( res => res.json());
   }
 }
 

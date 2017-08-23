@@ -27,7 +27,7 @@ import { BgimageComponent } from './components/bgimage/bgimage.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { DatatableComponent } from './components/datatable/datatable.component';
-import { FlashMessagesModule } from 'angular2-flash-messages/module';
+import { FlashMessagesModule } from 'ngx-flash-messages';
 
 
 const appRoutes:Routes =[

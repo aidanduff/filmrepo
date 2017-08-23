@@ -1,5 +1,6 @@
 <div *ngIf="movie" class="container outerbox">
-  <h2 class="page-header" style="text-align:center;">{{movie.title}} ({{movie.year}})</h2>
+  <h3 class="page-header" style="text-align:center;">{{movie.title}} ({{movie.year}})</h3>
+  <ngx-flash-messages></ngx-flash-messages>
   <hr>
     <div class="row">
         <div class="col-md-4">
@@ -7,7 +8,7 @@
         </div>
         <div class="col-md-8">
             <table class="table table-striped">
-            <thead class="thead-inverse"><tr><th><h4>{{movie.synopsis}}</h4></th></tr></thead>
+            <thead class="thead-inverse"><tr><th><h5>{{movie.synopsis}}</h5></th></tr></thead>
             <tr>Starring: {{movie.starring}}</tr>
             <tr>Directed by By: {{movie.director}}</tr>
             <tr>Written By: {{movie.writer}}</tr>
@@ -16,7 +17,7 @@
             <tr>Certificate: {{movie.certificate}}</tr>
             <tr>Country: {{movie.country}}</tr>
             <tr>Language: {{movie.language}}</tr>
-            <tr>Runtime: {{movie.runtime}}</tr>
+            <tr>Runtime: {{movie.runtime}} minutes</tr>
             </table>
             <hr>
             <button type= "button" class="btn btn-danger btn-lg" (click)= "onDeleteClick(movie._id)">Delete</button>

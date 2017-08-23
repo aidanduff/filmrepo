@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Movie } from '../../models/Movie';
 import { NgForm } from '@angular/forms';
-import { FlashMessagesService } from "angular2-flash-messages";
+import { FlashMessagesService } from "ngx-flash-messages";
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 const URL = 'http://localhost:3000/';
@@ -17,7 +17,11 @@ const URL = 'http://localhost:3000/';
 export class AddMovieComponent implements OnInit, OnDestroy {
   public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
   id:string;
+  resMovie:Movie;
+  genObject:Object;
+  isLoading:boolean;
   movie:Movie = {
+    _id:'',
     title:'',
     writer:'',
     director:'',
@@ -29,7 +33,7 @@ export class AddMovieComponent implements OnInit, OnDestroy {
     runtime:0,
     certificate:0,
     synopsis:'',
-    poster:''
+    poster:'',
   }
   @Input() anyDataForm: any;
 
@@ -59,11 +63,46 @@ export class AddMovieComponent implements OnInit, OnDestroy {
 
   }
 
+  // onSubmit({value}:{value:Movie}){
+  //   console.log(value);
+  //   this.getallService.addMovie(value);
+  //   setInterval(10000);
+  //   this.activeModal.close();
+  //   //this.router.navigate(['/movie'+this.movie.$key]);
+  //   this.flashMessagesService.show('Movie Successfully Added', {
+  //     classes: ['alert', 'alert-success'], // You can pass as many classes as you need
+  //     timeout: 3000, // Default is 3000
+  //     });
+  // }
+
+//   searchUser() {
+//   this.isLoading = true;
+//   this._searchService.getUser(this.customerEmail)
+//     .subscribe(user => { 
+//       this.isLoading = false;
+
+//       // To use for data binding in the component
+//       this.user = user;
+
+//       console.log('user = ', user);
+//   });
+// }
+
   onSubmit({value}:{value:Movie}){
-    console.log(value);
-    this.getallService.addMovie(value);
-    this.flashMessagesService.show('Movie added', {cssClass:'alert-success', timeout:3000});
+    this.getallService.addMovie(value).subscribe(genObject => { 
+    this.genObject = genObject;
+    console.log(genObject._id);
+    
     this.activeModal.close();
+    this.router.navigate(['/movie/' +genObject._id ])
+
+    //this.router.navigate(['/movie'+ res.film._id]);
+    });
+    //this.router.navigate(['/movie'+this.movie.$key]);
+    this.flashMessagesService.show('Movie Successfully Added', {
+      classes: ['alert', 'alert-success'], // You can pass as many classes as you need
+      timeout: 3000, // Default is 3000
+      });
   }
 
   onClose(){

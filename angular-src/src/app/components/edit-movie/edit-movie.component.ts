@@ -6,6 +6,7 @@ import { MovieComponent } from '../movie/movie.component';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FlashMessagesService } from 'ngx-flash-messages';
 
 const URL = 'http://localhost:3000/';
 
@@ -37,7 +38,8 @@ export class EditMovieComponent implements OnInit, AfterViewInit {
   constructor(public getallService:GetallService,
               public router:Router,
               public route:ActivatedRoute,
-              public activeModal: NgbActiveModal) { }
+              public activeModal: NgbActiveModal,
+            public flashMessagesService:FlashMessagesService) { }
 
   ngOnInit() {
     this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
@@ -65,6 +67,10 @@ export class EditMovieComponent implements OnInit, AfterViewInit {
     console.log(this.id);
     this.getallService.updateMovie(this.id, value);
     this.activeModal.close();
+    this.flashMessagesService.show('Movie Successfully Edited', {
+      classes: ['alert', 'alert-success'], // You can pass as many classes as you need
+      timeout: 3000, // Default is 3000
+      });
     // this.router.navigate(['/movie/'+this.id]);
   }
 
