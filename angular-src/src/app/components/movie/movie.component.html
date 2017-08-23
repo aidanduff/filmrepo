@@ -1,26 +1,37 @@
-<div *ngIf="movie" class="container">
-    <br>
-  <h2 class="page-header">{{movie.title}} ({{movie.year}})</h2>
+<div *ngIf="movie" class="container outerbox">
+  <h2 class="page-header" style="text-align:center;">{{movie.title}} ({{movie.year}})</h2>
+  <hr>
     <div class="row">
         <div class="col-md-4">
-            <img src="http://localhost:3000/uploads/{{movie.poster}}" class="thumbnail" >
+            <img src="http://localhost:3000/uploads/{{movie.poster}}" style="width:90%; height:90%;" class="thumbnail" >
         </div>
         <div class="col-md-8">
-            <h4>{{movie.synopsis}}</h4><br>
-            <p>Starring: {{movie.starring}}</p>
-            <p>Directed by By: {{movie.director}}</p>
-            <p>Written By: {{movie.writer}}</p>
-            <p>Released: {{movie.year}}</p>
-            <p>Genre: {{movie.genre}}</p>
-            <p>Certificate: {{movie.certificate}}</p>
-            <p>Language: {{movie.language}}</p>
-            <p>Runtime: {{movie.runtime}}</p>
-            <br>
+            <table class="table table-striped">
+            <thead class="thead-inverse"><tr><th><h4>{{movie.synopsis}}</h4></th></tr></thead>
+            <tr>Starring: {{movie.starring}}</tr>
+            <tr>Directed by By: {{movie.director}}</tr>
+            <tr>Written By: {{movie.writer}}</tr>
+            <tr>Released: {{movie.year}}</tr>
+            <tr>Genre: {{movie.genre}}</tr>
+            <tr>Certificate: {{movie.certificate}}</tr>
+            <tr>Country: {{movie.country}}</tr>
+            <tr>Language: {{movie.language}}</tr>
+            <tr>Runtime: {{movie.runtime}}</tr>
+            </table>
             <hr>
-            <button type= "button" class="btn btn-success btn-lg" (click)= "openEdit(movie._id)">Edit</button>
             <button type= "button" class="btn btn-danger btn-lg" (click)= "onDeleteClick(movie._id)">Delete</button>
+            <button type= "button" class="btn btn-success btn-lg" (click)= "openEdit(movie._id)">Edit</button>
+            
         </div>
     </div>
 </div>
+<br>
+<div *ngIf="movie">
+  <h4>More Movies like {{movie.title}}</h4>
+</div>
+    <app-slider [movies]= "moviesByGenre"></app-slider>
+
+
+
 
 

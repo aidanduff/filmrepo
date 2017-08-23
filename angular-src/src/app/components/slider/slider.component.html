@@ -82,7 +82,7 @@
     </div> -->
 
     <div class="vertical-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex="100%">
-      <div class="box-title">Swiper</div>
+      <!-- <div class="box-title">Swiper</div> -->
 
       <div class="content-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex>
         <swiper *ngIf="type == 'component' && show" overlay-controls [config]="config" (indexChange)="onIndexChange($event)" fxFlex>
@@ -94,6 +94,8 @@
                     <br><br><br><br><br><br><br><br>
                     <h5 class="card-title">{{movie.title}}</h5>
                     <p class="card-text">{{movie.genre}}<br>{{movie.year}}
+                    <!-- <a [routerLink]="['/movie/'+movie._id]" class="btn btn-secondary btn-sm float-right">Details</a></p> -->
+                    <!-- <button type="button" class="btn btn-secondary btn-sm float-right" (click)="onMovieClick(movie._id)">Details</button></p> -->
                     <a [routerLink]="['/movie/'+movie._id]" type="" href="" class="btn btn-secondary btn-sm float-right">Details</a></p>
                   </div>
               </div> 
@@ -106,12 +108,12 @@
             <div *ngFor="let movie of movies" class="swiper-slide">
               <div class="swiper-slide-content" fxLayout="column" fxLayoutAlign="center center">
                 <div class="card card-inverse img-fluid">
-                  <img class="card-img" src="http://localhost:3000/uploads/{{movie.poster}}" alt="Card image cap">
+                  <img class="card-img" src="http://localhost:3000/uploads/{{movie.poster}}"ng serve alt="Card image cap">
                   <div class="card-img-overlay">
                     <br><br><br><br><br><br><br><br>
                     <h5 class="card-title">{{movie.title}}</h5>
                     <p class="card-text">{{movie.genre}}<br>{{movie.year}}
-                    <a [routerLink]="['/movie/'+movie._id]" type="" href="" class="btn btn-secondary btn-sm float-right">Details</a></p>
+                    <!-- <a [routerLink]=[('movie/'+._id)] type="" href="#" class="btn btn-secondary btn-sm float-right">Details</a></p> -->
                   </div>
                 </div> 
               </div>

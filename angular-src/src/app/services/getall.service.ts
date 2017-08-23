@@ -16,6 +16,7 @@ export class GetallService {
   }
 
   getMovie(id:string){
+    console.log('getMovie called')
     return this.http.get('http://localhost:3000/movieApp/films/'+id).map( res => res.json());
     
   }
@@ -35,6 +36,11 @@ export class GetallService {
 
   deleteMovie(id:string){
     return this.http.delete('http://localhost:3000/movieApp/films/'+id).map( res => res.json());
+    
+  }
+
+  getMovieByGenre(genre:string){
+    return this.http.get('http://localhost:3000/movieApp/films/genre/'+genre).map( res => res.json());
     
   }
 }

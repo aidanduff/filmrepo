@@ -3,12 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import { DataTableModule } from 'angular-4-data-table';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FileSelectDirective } from 'ng2-file-upload';
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -23,13 +21,13 @@ import { ModalsComponent, AddMovieModalContent, EditMovieModalContent } from './
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
+
 import { GetallService} from "./services/getall.service";
 import { BgimageComponent } from './components/bgimage/bgimage.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
-
-
-
+import { DatatableComponent } from './components/datatable/datatable.component';
+import { FlashMessagesModule } from 'angular2-flash-messages/module';
 
 
 const appRoutes:Routes =[
@@ -43,7 +41,7 @@ const appRoutes:Routes =[
   {path:'sandbox', component: SandboxComponent},
   {path:'bgimg', component: BgimageComponent},
   {path:'slider', component: SliderComponent},
-  {path:'upload', component: FileUploadComponent}
+  {path:'datatable', component: DatatableComponent}
 ]
 const SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -69,21 +67,23 @@ const SWIPER_CONFIG: SwiperConfigInterface = {
     ModalsComponent,
     SliderComponent,
     FileUploadComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    DatatableComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    DataTableModule,
     AngularFontAwesomeModule,
     FlexLayoutModule,
     NgbModule.forRoot(),
+    FlashMessagesModule,
     SwiperModule.forRoot(SWIPER_CONFIG),
-    RouterModule.forRoot(appRoutes),
+    RouterModule,
+    RouterModule.forRoot(appRoutes, { useHash: true }),
     
   ],
-  entryComponents: [AddMovieModalContent, EditMovieModalContent],
+  entryComponents: [AddMovieModalContent, EditMovieModalContent, SliderComponent, MovieComponent],
   providers: [GetallService],
   bootstrap: [AppComponent]
 })

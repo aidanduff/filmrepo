@@ -9,7 +9,7 @@
 .box-container {
   box-sizing: border-box;
   width: 1100px;
-  height: 425px;
+  height: 355px;
   max-width: 110%;
   max-height: 90%;
   padding: 2px;
@@ -120,4 +120,12 @@ a {
 
 .row-equal .card {
    width: 100%;
+}
+
+:host /deep/ .content-container[_ngcontent-c2] {
+    position: relative;
+    overflow: auto;
+    margin: 0px 0px 0px 0px;
+    border-radius: 4px;
+    background-color: #fff;
 }

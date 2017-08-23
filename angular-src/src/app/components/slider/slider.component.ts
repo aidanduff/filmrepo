@@ -1,10 +1,11 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, Input, Output } from '@angular/core';
 import { SwiperComponent, SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { CommonModule } from '@angular/common';
 import { NgStyle } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GetallService } from "../../services/getall.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute, Params, RouterModule, RouterOutlet } from "@angular/router";
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 
 @Component({
   selector: 'app-slider',
@@ -13,22 +14,7 @@ import { Router } from "@angular/router";
 })
 export class SliderComponent implements OnInit{
   public show: boolean = true;
-  movies:any[];
-
-  public slides = [
-    'First slide',
-    'Second slide',
-    'Third slide',
-    'Fourth slide',
-    'Fifth slide',
-    'Sixth slide',
-    'Seventh slide',
-    'Eighth slide',
-    'Ninth slide',
-    'Tenth slide',
-    'Eleventh slide',
-    'Twelfth slide'
-  ];
+  @Input()movies:any[];
 
   public type: string = 'component';
 
@@ -51,7 +37,10 @@ export class SliderComponent implements OnInit{
   @ViewChild(SwiperDirective) directiveRef: SwiperDirective;
 
   constructor(private getallService:GetallService,
-              private router:Router) {}
+              private router:Router,
+              private route:ActivatedRoute) {
+                //this.route.params.subscribe( params => this.onMovieClick(params['id']));
+              }
 
   ngOnInit(){
     this.getallService.getMovies().subscribe(movies => {
@@ -100,6 +89,13 @@ export class SliderComponent implements OnInit{
 
   onIndexChange(index: number) {
     console.log('Swiper index: ' + index);
+  }
+
+  // @Input()onMovieClick(id:string){
+  onMovieClick(id:string){
+    console.log('clicked in slider component'+ id);
+    console.log(this.route);
+    this.router.navigate(['/movie/'+id]);
   }
 }
 

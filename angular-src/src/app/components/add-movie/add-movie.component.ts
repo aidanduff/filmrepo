@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { Movie } from '../../models/Movie';
 import { NgForm } from '@angular/forms';
+import { FlashMessagesService } from "angular2-flash-messages";
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 const URL = 'http://localhost:3000/';
@@ -35,14 +36,14 @@ export class AddMovieComponent implements OnInit, OnDestroy {
   constructor(public getallService:GetallService,
               public router:Router,
               public route:ActivatedRoute,
-              public activeModal: NgbActiveModal
+              public activeModal: NgbActiveModal,
+              private flashMessagesService:FlashMessagesService
             ) { }
 
   ngOnInit() {
     this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
       console.log("ImageUpload:uploaded:", item, status, response);
-      item.name = this.movie.poster;
     };
   }
 
@@ -61,6 +62,7 @@ export class AddMovieComponent implements OnInit, OnDestroy {
   onSubmit({value}:{value:Movie}){
     console.log(value);
     this.getallService.addMovie(value);
+    this.flashMessagesService.show('Movie added', {cssClass:'alert-success', timeout:3000});
     this.activeModal.close();
   }
 

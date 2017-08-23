@@ -120,6 +120,9 @@
           <button  type="button" class="upldbtn btn btn-success form-control left" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
           Upload
           </button>
+            <div class="progress" style="margin-bottom: 0;">
+              <div class="progress-bar" role="progressbar"></div>
+            </div>
         </div>
       <div class ="button group" style="width:100%;">
         <button type="button" class="btn btn-danger" (click)="onClose()">Close</button>

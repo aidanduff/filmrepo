@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { DataTable, DataTableTranslations, DataTableResource } from 'angular-4-data-table';
+// import { DataTable, DataTableTranslations, DataTableResource } from 'angular-2-data-table-bootstrap4';
 import { GetallService } from "../../services/getall.service";
 import { Router } from '@angular/router';
 import { Movie } from '../../models/Movie';
@@ -14,17 +14,12 @@ export class LibraryComponent{
     movies:[Object];
     movieCount = 0;
 
-    @ViewChild(DataTable) filmsTable;
+    // @ViewChild(DataTable) filmsTable;
 
     constructor(private getallService:GetallService,
               private router:Router){
 
     } 
-
-    // ngOnInit() {
-    // this.getallService.getMovies().subscribe(movies => {
-    //   this.movies= movies;
-    // });
 
     reloadFilms(params) {
         this.getallService.getMovies().subscribe(movies => {
@@ -32,18 +27,18 @@ export class LibraryComponent{
         });
     }
 
-    cellColor(car) {
-        return 'rgb(255, 255,' + (155 + Math.floor(100 - ((car.rating - 8.7)/1.3)*100)) + ')';
-    };
+    // cellColor(car) {
+    //     return 'rgb(255, 255,' + (155 + Math.floor(100 - ((car.rating - 8.7)/1.3)*100)) + ')';
+    // };
 
-    // special params:
+    // // special params:
 
-    translations = <DataTableTranslations>{
-        indexColumn: 'Index column',
-        expandColumn: 'Expand column',
-        selectColumn: 'Select column',
-        paginationLimit: 'Max results',
-        paginationRange: 'Result range'
-    };
+    // translations = <DataTableTranslations>{
+    //     indexColumn: 'Index column',
+    //     expandColumn: 'Expand column',
+    //     selectColumn: 'Select column',
+    //     paginationLimit: 'Max results',
+    //     paginationRange: 'Result range'
+    // };
 
 }
