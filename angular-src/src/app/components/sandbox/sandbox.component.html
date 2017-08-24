@@ -1,15 +1,35 @@
-<!-- <div *ngIf="movies?.length > 0;" class="card-deck"> -->
-  <ngb-carousel *ngIf="movies?.length > 0;">
-    <ng-template ngbSlide *ngFor="let movie of movies" class="card-deck">
-       <div class="card card-inverse img-fluid">
-        <img class="card-img" src="../../assets/img/{{movie.poster}}" alt="Card image cap">
-        <div class="card-img-overlay">
-          <br><br><br><br><br><br><br><br><br><br>
-          <h4 class="card-title">{{movie.title}}</h4>
-          <p class="card-text">Starring {{movie.director}}<br>{{movie.genre}}<br>{{movie.year}}
-          <a [routerLink]="['/movie/'+movie._id]" type="" href="" class="btn btn-secondary btn-sm float-right">Details</a></p>
-        </div>
-     </div> 
-    </ng-template>
-  </ngb-carousel>
-<!-- </div> -->
+<br><br>
+<div class="row"> 
+  <div class="col-md-6">
+    <h2><i class="fa fa-users"></i>Movies</h2>
+  </div>
+</div>
+<table *ngIf="movies?.length > 0;" class="table table-striped"> 
+  <thead class="thead-inverse">
+    <tr>
+      <th>Poster</th>
+      <th>Title</th>
+      <th>Writer</th>
+      <th>Director</th>
+      <th>Starring</th>
+      <th>Genre</th>
+      <th>Year</th>
+      <th>Plot</th>
+      <th></th>
+    </tr>
+  </thead>
+    <input type="text" [(ngModel)]="movieFilter.title" placeholder="name">
+  <tbody>
+    <tr *ngFor="let movie of movies | filterBy: movieFilter">
+      <td><img class="thumbnail" src="http://localhost:3000/uploads/{{movie.poster}}" height="50%"></td> 
+      <td>{{movie.title}}</td>
+      <td>{{movie.writer}}</td>
+      <td>{{movie.director}}</td>
+      <td>{{movie.starring}}</td>
+      <td>{{movie.genre}}</td>
+      <td>{{movie.year}}</td>
+      <td>{{movie.synopsis}}</td>
+      <td><a [routerLink]="['/movie/'+movie._id]" href="" class="btn btn-secondary btn-sm">Details</a></td>
+    </tr>
+  </tbody>
+</table>

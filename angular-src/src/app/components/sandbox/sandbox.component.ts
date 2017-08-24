@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetallService } from "../../services/getall.service";
 import { Router } from "@angular/router";
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-sandbox',
@@ -8,15 +9,15 @@ import { Router } from "@angular/router";
   styleUrls: ['./sandbox.component.css']
 })
 export class SandboxComponent implements OnInit {
-  movies: Array<any> = [];
-  id:String;
+movies:any[];
+movieFilter: any = { title: '' };
 
   constructor(private getallService:GetallService,
               private router:Router) { }
 
   ngOnInit() {
     this.getallService.getMovies().subscribe(movies => {
-    this.movies= movies;
+      this.movies= movies;
     });
   }
 

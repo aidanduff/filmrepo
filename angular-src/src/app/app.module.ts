@@ -15,18 +15,17 @@ import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { EditMovieComponent } from './components/edit-movie/edit-movie.component';
 import { FullCatalogueComponent } from './components/full-catalogue/full-catalogue.component';
 import { MovieComponent } from './components/movie/movie.component';
-import { LibraryComponent } from './components/library/library.component';
 import { SandboxComponent } from './components/sandbox/sandbox.component';
 import { ModalsComponent, AddMovieModalContent, EditMovieModalContent } from './components/modals/modals.component';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 import { GetallService} from "./services/getall.service";
 import { BgimageComponent } from './components/bgimage/bgimage.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
-import { DatatableComponent } from './components/datatable/datatable.component';
 import { FlashMessagesModule } from 'ngx-flash-messages';
 
 
@@ -37,11 +36,9 @@ const appRoutes:Routes =[
   {path:'edit-movie/:id', component: EditMovieComponent},
   {path:'full-catalogue', component: FullCatalogueComponent},
   {path:'movie/:id', component: MovieComponent},
-  {path:'library', component: LibraryComponent},
   {path:'sandbox', component: SandboxComponent},
   {path:'bgimg', component: BgimageComponent},
-  {path:'slider', component: SliderComponent},
-  {path:'datatable', component: DatatableComponent}
+  {path:'slider', component: SliderComponent}
 ]
 const SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -59,7 +56,6 @@ const SWIPER_CONFIG: SwiperConfigInterface = {
     EditMovieComponent,
     FullCatalogueComponent,
     MovieComponent,
-    LibraryComponent,
     SandboxComponent,
     BgimageComponent,
     AddMovieModalContent,
@@ -67,20 +63,21 @@ const SWIPER_CONFIG: SwiperConfigInterface = {
     ModalsComponent,
     SliderComponent,
     FileUploadComponent,
-    FileSelectDirective,
-    DatatableComponent
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    FilterPipeModule,
     HttpModule,
     AngularFontAwesomeModule,
     FlexLayoutModule,
+    Ng2SmartTableModule,
     NgbModule.forRoot(),
     FlashMessagesModule,
     SwiperModule.forRoot(SWIPER_CONFIG),
     RouterModule,
-    RouterModule.forRoot(appRoutes, { useHash: true }),
+    RouterModule.forRoot(appRoutes)
     
   ],
   entryComponents: [AddMovieModalContent, EditMovieModalContent, SliderComponent, MovieComponent],

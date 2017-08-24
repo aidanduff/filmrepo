@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GetallService } from "../../services/getall.service";
 import { Router } from "@angular/router";
+import { Pipe, PipeTransform } from '@angular/core';
+import { FilterPipe } from './filter.pipes';
 
 @Component({
   selector: 'app-full-catalogue',

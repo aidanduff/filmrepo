@@ -27,12 +27,6 @@ export class GetallService {
     return this.http.put('http://localhost:3000/movieApp/films/'+id, movie, { headers: headers }).map((res: Response) => res.json()).subscribe(movie => this.movie = movie);
   }
 
-  // addMovie(movie:Movie){
-  //   let headers = new Headers();
-  //   headers.append('Content-Type', 'application/json');
-  //   return this.http.post('http://localhost:3000/movieApp/films/', movie, { headers: headers }).map((res: Response) => res.json()).subscribe(movie => this.movie = movie) => { this.res = res; console.log(res);});
-  // }
-
   addMovie(movie:Movie): Observable<Movie>{
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
