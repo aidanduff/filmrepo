@@ -7,6 +7,7 @@ import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FlashMessagesService } from 'ngx-flash-messages';
+import { SandboxComponent} from '../sandbox/sandbox.component';
 
 const URL = 'http://localhost:3000/';
 
@@ -19,6 +20,7 @@ export class EditMovieComponent implements OnInit, AfterViewInit {
    public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
   @ViewChild('movieId') input;
   private movieComponent:MovieComponent
+  private sandboxComponent:SandboxComponent
   id:any;
   movie:Movie = {
     title:'',
@@ -55,7 +57,7 @@ export class EditMovieComponent implements OnInit, AfterViewInit {
         this.movie.poster = name;
 
         event= null;
-    }
+  }
 
   ngAfterViewInit(){
     this.id =this.input.model;

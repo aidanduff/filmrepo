@@ -21,6 +21,7 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import {Ng2PaginationModule} from 'ng2-pagination';
 
 import { GetallService} from "./services/getall.service";
 import { BgimageComponent } from './components/bgimage/bgimage.component';
@@ -66,6 +67,7 @@ const SWIPER_CONFIG: SwiperConfigInterface = {
     FileSelectDirective
   ],
   imports: [
+    Ng2PaginationModule,
     BrowserModule,
     FormsModule,
     FilterPipeModule,
