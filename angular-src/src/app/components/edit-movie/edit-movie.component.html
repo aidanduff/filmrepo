@@ -128,6 +128,10 @@
           Upload
           </button>
         </div>
+      <div class="progress form-group right" style="width:100%;">
+              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }">Progress {{uploader.progress}}%</div>
+          </div>
+       <br>
       <div class ="button group" style="width:100%;">
         <button type="button" class="btn btn-danger" (click)="onClose()">Close</button>
         <input type="submit" class="btn btn-success" value="Submit">
