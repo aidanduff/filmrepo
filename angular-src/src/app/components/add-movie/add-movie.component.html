@@ -120,10 +120,14 @@
           <button  type="button" class="upldbtn btn btn-success form-control left" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
           Upload
           </button>
-            <div class="progress" style="margin-bottom: 0;">
-              <div class="progress-bar" role="progressbar"></div>
-            </div>
+          <!-- <div class="progress form-group right">
+              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }">progress bar</div>
+          </div> -->
         </div>
+        <div class="progress form-group right" style="width:100%;">
+              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }">Progress</div>
+          </div>
+        <br>
       <div class ="button group" style="width:100%;">
         <button type="button" class="btn btn-danger" (click)="onClose()">Close</button>
         <input type="submit" class="btn btn-success" value="Submit">

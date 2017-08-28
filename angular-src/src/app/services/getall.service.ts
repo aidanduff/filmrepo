@@ -42,6 +42,10 @@ export class GetallService {
     return this.http.get('http://localhost:3000/movieApp/films/genre/'+genre).map( res => res.json());
   }
 
+  getMovieByCertificate(certificate:number){
+    return this.http.get('http://localhost:3000/movieApp/films/certificate/'+certificate).map( res => res.json());
+  }
+
   getMovieByTitle(title:string){
     return this.http.get('http://localhost:3000/movieApp/films/title/'+title).map( res => res.json());
   }

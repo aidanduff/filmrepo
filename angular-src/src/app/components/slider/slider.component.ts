@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, Input, Output } from '@angular/core';
+import { Component, ViewChild, OnInit, Input, Output, AfterViewInit } from '@angular/core';
 import { SwiperComponent, SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { CommonModule } from '@angular/common';
 import { NgStyle } from '@angular/common';
@@ -38,9 +38,7 @@ export class SliderComponent implements OnInit{
 
   constructor(private getallService:GetallService,
               private router:Router,
-              private route:ActivatedRoute) {
-                //this.route.params.subscribe( params => this.onMovieClick(params['id']));
-              }
+              private route:ActivatedRoute) {}
 
   ngOnInit(){
     this.getallService.getMovies().subscribe(movies => {

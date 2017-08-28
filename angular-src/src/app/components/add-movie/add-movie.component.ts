@@ -57,36 +57,11 @@ export class AddMovieComponent implements OnInit, OnDestroy {
         this.movie.poster = name;
 
         event= null;
-    }
+  }
 
   ngOnDestroy(){
 
   }
-
-  // onSubmit({value}:{value:Movie}){
-  //   console.log(value);
-  //   this.getallService.addMovie(value);
-  //   setInterval(10000);
-  //   this.activeModal.close();
-  //   //this.router.navigate(['/movie'+this.movie.$key]);
-  //   this.flashMessagesService.show('Movie Successfully Added', {
-  //     classes: ['alert', 'alert-success'], // You can pass as many classes as you need
-  //     timeout: 3000, // Default is 3000
-  //     });
-  // }
-
-//   searchUser() {
-//   this.isLoading = true;
-//   this._searchService.getUser(this.customerEmail)
-//     .subscribe(user => { 
-//       this.isLoading = false;
-
-//       // To use for data binding in the component
-//       this.user = user;
-
-//       console.log('user = ', user);
-//   });
-// }
 
   onSubmit({value}:{value:Movie}){
     this.getallService.addMovie(value).subscribe(genObject => { 

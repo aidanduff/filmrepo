@@ -12,7 +12,7 @@ export class BgimageComponent implements OnInit {
 
   ngOnInit() {
     this.picture = '../../../assets/img/darkback.png';
-    // this.picture = '../../../assets/img/titanic.png';
+    // this.picture = '../../assets/img/titanic.png';
   }
 
 }

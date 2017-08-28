@@ -28,6 +28,7 @@ import { BgimageComponent } from './components/bgimage/bgimage.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { FlashMessagesModule } from 'ngx-flash-messages';
+import { AllMoviesComponent } from './components/all-movies/all-movies.component';
 
 
 const appRoutes:Routes =[
@@ -35,7 +36,7 @@ const appRoutes:Routes =[
   {path:'dashboard', component: DashboardComponent},
   {path:'add-movie', component: AddMovieComponent},
   {path:'edit-movie/:id', component: EditMovieComponent},
-  {path:'full-catalogue', component: FullCatalogueComponent},
+  {path:'all-movies', component: AllMoviesComponent},
   {path:'movie/:id', component: MovieComponent},
   {path:'sandbox', component: SandboxComponent},
   {path:'bgimg', component: BgimageComponent},
@@ -64,7 +65,8 @@ const SWIPER_CONFIG: SwiperConfigInterface = {
     ModalsComponent,
     SliderComponent,
     FileUploadComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    AllMoviesComponent
   ],
   imports: [
     Ng2PaginationModule,

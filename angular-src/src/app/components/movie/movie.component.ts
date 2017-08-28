@@ -20,7 +20,7 @@ import 'rxjs/add/operator/map';
 export class MovieComponent implements OnInit {
   private sliderComponent:SliderComponent
   public show: boolean = true;
- @Input()moviesByGenre:any[];
+  @Input()moviesByGenre:any[];
   @ViewChild(SliderComponent)
   movie:Movie;
   id:string;
@@ -49,7 +49,7 @@ export class MovieComponent implements OnInit {
   ngAfterViewInit(){
   }
 
-  openEdit(value) {
+  openEdit() {
     const modalRef = this.modalService.open(EditMovieComponent);
     modalRef.componentInstance.movie = this.movie;  
   }
@@ -63,6 +63,3 @@ export class MovieComponent implements OnInit {
     }  
   } 
 }
-
-
-

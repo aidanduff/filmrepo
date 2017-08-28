@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FlashMessagesService } from 'ngx-flash-messages';
 
 @Component({
   selector: 'app-home',
@@ -9,18 +7,9 @@ import { FlashMessagesService } from 'ngx-flash-messages';
 })
 
 export class HomeComponent implements OnInit {
-  closeResult: string;
 
-  constructor(public flashMessagesService:FlashMessagesService) { }
+  constructor() { }
 
   ngOnInit() {
   }
-
-  buttonClicked(){
-    this.flashMessagesService.show('Button was clicked', {
-      classes: ['alert', 'alert-success'], // You can pass as many classes as you need
-      timeout: 3000, // Default is 3000
-    });
-  }
-
 }

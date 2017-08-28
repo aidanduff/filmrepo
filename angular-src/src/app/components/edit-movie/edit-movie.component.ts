@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, Output, EventEmitter} from '@angular/core';
 import { GetallService } from '../../services/getall.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Movie } from '../../models/Movie';
@@ -17,11 +17,11 @@ const URL = 'http://localhost:3000/';
   styleUrls: ['./edit-movie.component.css']
 })
 export class EditMovieComponent implements OnInit, AfterViewInit {
-   public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
+  public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
+  private sanboxComponent:SandboxComponent;
   @ViewChild('movieId') input;
   private movieComponent:MovieComponent
-  private sandboxComponent:SandboxComponent
-  id:any;
+  _id:any;
   movie:Movie = {
     title:'',
     writer:'',
@@ -60,20 +60,20 @@ export class EditMovieComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
-    this.id =this.input.model;
+    //this.id =this.input.model;
   }
 
 
   onSubmit({value}:{value:Movie}){
     value = this.movie;
-    console.log(this.id);
-    this.getallService.updateMovie(this.id, value);
+    console.log(this.movie);
+    console.log(this.movie._id);
+    this.getallService.updateMovie(this.movie._id, value);
     this.activeModal.close();
     this.flashMessagesService.show('Movie Successfully Edited', {
       classes: ['alert', 'alert-success'], // You can pass as many classes as you need
       timeout: 3000, // Default is 3000
-      });
-    // this.router.navigate(['/movie/'+this.id]);
+   });
   }
 
   onClose(){

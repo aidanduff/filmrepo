@@ -1,6 +1,30 @@
 <br>
+    <div class="form-group col-md-3" (change)="onChange($event)">
+            <label class="col-xs-3 control-label">Genre: </label>
+            <div class="col-xs-5 selectContainer">
+                <select class="form-control"  name="genre">
+                    <option value="">Choose a genre</option>
+                    <option value="Crime">Crime</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Animation">Animation</option>
+                </select>
+            </div>
+        </div>
+    <app-slider [movies]= "moviesByGenre"></app-slider>
 <br>
-<app-slider></app-slider>
 <br>
-<br>
-<app-slider></app-slider>
+ <div class="form-group col-md-3" (change)="onChangeCert($event)">
+            <label class="col-xs-3 control-label" style="float:left;"><h5>Choose by Certificate:</h5> </label>
+            <div class="col-xs-5 selectContainer" >
+                <select class="form-control"  name="genre">
+                    <option value="">please select</option>
+                    <option value="G">G</option>
+                    <option value="PG">PG</option>
+                    <option value="12">12</option>
+                    <option value="15">15</option>
+                    <option value="18">18</option>
+                </select>
+            </div>
+        </div>
+ <app-slider [movies]= "moviesByCertificate"></app-slider> 

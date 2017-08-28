@@ -11,13 +11,12 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
 @Component({
-  selector: 'app-sandbox',
-  templateUrl: './sandbox.component.html',
-  styleUrls: ['./sandbox.component.css']
+  selector: 'app-all-movies',
+  templateUrl: './all-movies.component.html',
+  styleUrls: ['./all-movies.component.css']
 })
-
-export class SandboxComponent{
-  movies:Movie[]
+export class AllMoviesComponent{
+ movies:Movie[]
   movie:Movie;
   id:string;
   movieFilter: any = { title: '' };
