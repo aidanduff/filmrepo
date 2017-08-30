@@ -1,11 +1,12 @@
-import { browser, element, by } from 'protractor';
+import { ElementFinder, browser, element, by} from 'protractor';
+
 
 export class AngularSrcPage {
   navigateTo() {
-    return browser.get('/');
+    return browser.get('/testbox');
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('p')).getText();
   }
 }

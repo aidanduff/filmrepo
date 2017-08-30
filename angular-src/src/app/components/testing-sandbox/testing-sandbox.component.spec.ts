@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SandboxComponent } from './sandbox.component';
+import { TestingSandboxComponent } from './testing-sandbox.component';
 
-describe('SandboxComponent', () => {
-  let component: SandboxComponent;
-  let fixture: ComponentFixture<SandboxComponent>;
+describe('TestingSandboxComponent', () => {
+  let component: TestingSandboxComponent;
+  let fixture: ComponentFixture<TestingSandboxComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SandboxComponent ]
+      declarations: [ TestingSandboxComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SandboxComponent);
+    fixture = TestBed.createComponent(TestingSandboxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

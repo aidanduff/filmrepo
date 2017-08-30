@@ -33,7 +33,7 @@ function postFilm(req, res) {
             res.status(400).send(err);
         }
         else { //If no errors, send it back to the client
-            res.json(film);
+            res.json({ message: 'Film successfully added!', film });
         }
     });
 }

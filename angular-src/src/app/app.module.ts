@@ -13,34 +13,29 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { EditMovieComponent } from './components/edit-movie/edit-movie.component';
-import { FullCatalogueComponent } from './components/full-catalogue/full-catalogue.component';
 import { MovieComponent } from './components/movie/movie.component';
-import { SandboxComponent } from './components/sandbox/sandbox.component';
 import { ModalsComponent, AddMovieModalContent, EditMovieModalContent } from './components/modals/modals.component';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import {Ng2PaginationModule} from 'ng2-pagination';
 
 import { GetallService} from "./services/getall.service";
-import { BgimageComponent } from './components/bgimage/bgimage.component';
 import { SliderComponent } from './components/slider/slider.component';
-import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { FlashMessagesModule } from 'ngx-flash-messages';
 import { AllMoviesComponent } from './components/all-movies/all-movies.component';
+import { TestingSandboxComponent } from './components/testing-sandbox/testing-sandbox.component';
 
 
 const appRoutes:Routes =[
-  {path:'', component: HomeComponent},
+  {path:'home', component: HomeComponent},
   {path:'dashboard', component: DashboardComponent},
   {path:'add-movie', component: AddMovieComponent},
   {path:'edit-movie/:id', component: EditMovieComponent},
   {path:'all-movies', component: AllMoviesComponent},
   {path:'movie/:id', component: MovieComponent},
-  {path:'sandbox', component: SandboxComponent},
-  {path:'bgimg', component: BgimageComponent},
-  {path:'slider', component: SliderComponent}
+  {path:'slider', component: SliderComponent},
+  {path:'testbox', component: TestingSandboxComponent}
 ]
 const SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -56,17 +51,14 @@ const SWIPER_CONFIG: SwiperConfigInterface = {
     DashboardComponent,
     AddMovieComponent,
     EditMovieComponent,
-    FullCatalogueComponent,
     MovieComponent,
-    SandboxComponent,
-    BgimageComponent,
     AddMovieModalContent,
     EditMovieModalContent,
     ModalsComponent,
     SliderComponent,
-    FileUploadComponent,
     FileSelectDirective,
-    AllMoviesComponent
+    AllMoviesComponent,
+    TestingSandboxComponent
   ],
   imports: [
     Ng2PaginationModule,
@@ -76,7 +68,6 @@ const SWIPER_CONFIG: SwiperConfigInterface = {
     HttpModule,
     AngularFontAwesomeModule,
     FlexLayoutModule,
-    Ng2SmartTableModule,
     NgbModule.forRoot(),
     FlashMessagesModule,
     SwiperModule.forRoot(SWIPER_CONFIG),
