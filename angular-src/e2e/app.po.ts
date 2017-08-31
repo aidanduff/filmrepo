@@ -9,4 +9,9 @@ export class AngularSrcPage {
   getParagraphText() {
     return element(by.css('p')).getText();
   }
+
+  clickButton(){
+    element(by.buttonText('Click')).click();
+    return element(by.css('h2')).getText(); 
+  }
 }

@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./testing-sandbox.component.css']
 })
 export class TestingSandboxComponent implements OnInit {
+  clickText:string;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onClick(){
+    this.clickText='Button Clicked';
   }
 
 }

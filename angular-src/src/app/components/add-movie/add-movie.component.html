@@ -4,7 +4,8 @@
   <div class="card-header">
     Add New Movie
   </div>
-  <div class="card-block">
+  <div class="card-block" id="modBod">
+    <ngx-flash-messages></ngx-flash-messages>
     <form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
          <div class="form-group">
           <label class="left" for="title">Title: </label>
@@ -61,7 +62,7 @@
       </div>
         <div class="form-group">
           <label class="left" for="year">Year</label>
-          <input type="text"
+          <input type="number"
           class="form-control right"
           [(ngModel)]="movie.year"
           name="year"
@@ -79,7 +80,7 @@
       </div>
         <div class="form-group">
           <label class="left" for="runtime">Runtime</label>
-          <input type="text"
+          <input type="number"
           class="form-control right"
           [(ngModel)]="movie.runtime"
           name="runtime"
@@ -88,7 +89,7 @@
       </div>
         <div class="form-group">
           <label class="left" for="Certificate">Certificate</label>
-          <input type="text"
+          <input type="number"
           class="form-control right"
           [(ngModel)]="movie.certificate"
           name="certificate"
@@ -126,8 +127,8 @@
           </div>
         <br>
       <div class ="button group" style="width:100%;">
-        <button type="button" class="btn btn-danger" (click)="onClose()">Close</button>
-        <input type="submit" class="btn btn-success" value="Submit">
+        <button type="button" id="closeButton" class="btn btn-danger" (click)="onClose()">Close</button>
+        <input id="submitButton" type="submit" class="btn btn-success" value="Submit">
       </div>
     </form>
   </div>

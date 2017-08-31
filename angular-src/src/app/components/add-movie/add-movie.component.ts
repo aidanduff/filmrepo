@@ -63,20 +63,30 @@ export class AddMovieComponent implements OnInit, OnDestroy {
 
   }
 
-  onSubmit({value}:{value:Movie}){
-    this.getallService.addMovie(value).subscribe(genObject => { 
-    this.genObject = genObject;
-    console.log(genObject._id);
-    
-    this.activeModal.close();
-    // this.router.navigate(['/movie/' +genObject._id ])
-    });
-    //this.router.navigate(['/movie'+this.movie.$key]);
-    this.flashMessagesService.show('Movie Successfully Added', {
+  onSuccess(data){
+    this.flashMessagesService.show('Movie Successfully Added!', {
       classes: ['alert', 'alert-success'], 
       timeout: 3000, 
       });
+    this.activeModal.close();
   }
+
+  onError(data){
+    if(data.status == 400){
+      this.flashMessagesService.show('All fields are required!', {
+        classes: ['alert', 'alert-danger'], 
+        timeout: 3000, 
+      });
+    }
+  }
+
+  onSubmit({value}:{value:Movie}){
+    this.getallService.addMovie(value).subscribe(
+      successData => this.onSuccess(successData),
+      errData => this.onError(errData));  
+  }
+
+  
 
   onClose(){
     this.activeModal.close();

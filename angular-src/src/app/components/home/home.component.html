@@ -1,5 +1,6 @@
 <div class="jumbotro text-center">
     <br>
+  <ngx-flash-messages></ngx-flash-messages>
   <h1>flickJournal</h1>
   <p class="lead">Welcome to our flickJournal, your life in movies</p>
   <!-- <div>
@@ -7,8 +8,9 @@
     <a [routerLink]="['/dashboard']" class="btn btn-lg btn-success">Dashboard</a>
   </div>
 </div> -->
+
 <hr>
-  <div class="mainContainer" style="width:1000px; float:center;">
+  <div class="mainContainer" style="width:100%; float:center;">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -17,14 +19,18 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-          <img class="d-block img-fluid" src="http://images.nintendolife.com/reviews/3ds/wreck_it_ralph/large.jpg" alt="First slide">
+          <img class="d-block img-fluid" src="http://shahredownload.ir/wp-content/uploads/2017/08/wreck-it-ralph-2-2018.jpg" alt="First slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block img-fluid" src="https://images.vice.com/motherboard/content-images/article/no-id/1419202616855414.jpg" alt="Second slide">
+          <img class="d-block img-fluid" src="../../assets/img/anc.png" alt="Second slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block img-fluid" src="https://picturehouses.files.wordpress.com/2017/01/raging-bull-bg.jpg" alt="Third slide">
+          <img class="d-block img-fluid" src="../../assets/img/rb.png" alt="Third slide">
         </div>
+        <div class="carousel-item">
+          <img class="d-block img-fluid" src="https://help.disney.com/resource/1487229073000/dig_insideout/large/large_GX_banner-insideout.jpg" alt="Third slide">
+        </div>
+        
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -36,7 +42,8 @@
     </a>
     </div>
   </div>  
-  <br>  
+  <br> 
+  
   
 
     <div class="card-deck">
