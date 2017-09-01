@@ -1,7 +1,7 @@
 <div class="jumbotro text-center">
     <br>
-  <ngx-flash-messages></ngx-flash-messages>
-  <h1>flickJournal</h1>
+  <ngx-flash-messages id="homeFlash"></ngx-flash-messages>
+  <h1><i class="fa fa-film" aria-hidden="true"></i> flickJournal</h1>
   <p class="lead">Welcome to our flickJournal, your life in movies</p>
   <!-- <div>
     <a [routerLink]="['/all-movies']" class="btn btn-lg btn-primary">All Movies</a>
@@ -47,20 +47,35 @@
   
 
     <div class="card-deck">
-      <div class="card card-block">
-        <h3 class="card-header">Browse movies by certificate or by genre</h3>
-        <p>Visit the dashboard page to find your favorite films grouped according to your age or favorite genre</p>
+      <div class="card">
+        <div class="card-block">
+          <h3 class="card-header card-black card-inverse" style="color:white;"><b>Browse movies by certificate or by genre</b></h3>
+          <p>Visit the dashboard page to find your favorite films grouped according to your age or favorite genre</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
       </div>
-      <div class="card card-block">
-        <h3 class="card-header">Add movies and update existing ones</h3>
-        <p>Saw a movie recently or one that you'd like to see in future? Just click on 'Add Movie' to add it to your journal.</p>
-        <p>You can also change any of the details of the movies in your journal just by viewing that movie's page and hitting
-          the edit button</p>
+      <div class="card">
+        <div class="card-block">
+          <h3 class="card-header card-black card-inverse" style="color:white;"><b>Add movies and update existing ones</b></h3>
+          <p>Saw a movie recently or one that you'd like to see in future? Just click on 'Add Movie' to add it to your journal.</p>
+          <p>You can also change any of the details of the movies in your journal just by viewing that movie's page and hitting
+            the edit button</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
       </div>
-      <div class="card card-block">
-        <h3 class="card-header">Checkout the full library</h3>
-        <p>If you'd like to be able to view, edit, search and delete movies from your journal, all movies are available in the
-          full library section.</p>
+      <div class="card">
+        <div class="card-block">
+          <h3 class="card-header card-black card-inverse" style="color:white;"><b>Checkout the <br> full library</b></h3>
+          <p>If you'd like to be able to view, edit, search and delete movies from your journal, all movies are available in the
+            full library section.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
       </div>
     </div>
     <br><br>

@@ -16,7 +16,7 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./all-movies.component.css']
 })
 export class AllMoviesComponent{
- movies:Movie[]
+  movies:Movie[]
   movie:Movie;
   id:string;
   movieFilter: any = { title: '' };
@@ -53,4 +53,5 @@ constructor(private getallService:GetallService, private router:Router,
      });
     }
   }
+  
 }

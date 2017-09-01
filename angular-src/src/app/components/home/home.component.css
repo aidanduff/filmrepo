@@ -1,7 +1,7 @@
 .card-block {
     padding: .0; 
 }
-
+ 
 p {
     margin-top: 1rem;
     margin-right: 1rem;
@@ -14,4 +14,8 @@ p {
     padding-left:100px;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, rgba(0,0,0,0)), 
                 color-stop(77%, rgba(0,0,0,1)), color-stop(99%, rgba(0,0,0,1)), color-stop(100%, rgba(0,0,10,1)));
+}
+
+.card-black{
+    background-color: #292B2C;
 }

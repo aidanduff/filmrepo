@@ -14,17 +14,22 @@ export class AddMovieTest {
   submitEmptyForm(){
       element(by.css('body > app-root > div > div > app-navbar > nav > div > ul > li:nth-child(4) > a')).click();
       element(by.css('#submitButton')).click();
+      browser.sleep(2000);
       browser.ignoreSynchronization = true;
-      return element(by.css('#flashMessages')).getText();
+      return element(by.id('addMovieFlash')).getText();
   }
 
-  submitPartiallyEmptyForm(){
+  submitPartiallyFilledForm(){
       element(by.css('body > app-root > div > div > app-navbar > nav > div > ul > li:nth-child(4) > a')).click();
       var titleField = element(by.css('#modBod > form > div:nth-child(1) > input'));
       titleField.sendKeys('Scarface');
+      var writerField = element(by.css('#modBod > form > div:nth-child(2) > input'));
+      writerField.sendKeys('Oliver Stone');
+      var directorField = element(by.css('#modBod > form > div:nth-child(3) > input'));
+      directorField.sendKeys('Brian De Palma');
       element(by.css('#submitButton')).click();
       browser.ignoreSynchronization = true;
-      return element(by.css('#flashMessages')).getText();
+      return element(by.id('addMovieFlash')).getText();
   }
 
    submitFullyFilledForm(){
@@ -52,12 +57,12 @@ export class AddMovieTest {
       certField.sendKeys('18');
       var synopsisField = element(by.css('#modBod > form > div:nth-child(11) > textarea'));
       synopsisField.sendKeys('In Miami in 1980, a determined Cuban immigrant takes over a drug cartel and succumbs to greed.');
-      var posterField = element(by.css('#modBod > form > div:nth-child(12) > input'));
+      var posterField = element(by.id('posterField'));
       posterField.sendKeys('scarface.jpg');
 
       element(by.css('#submitButton')).click();
       browser.ignoreSynchronization = true;
-      return element(by.css('#flashMessages')).getText();
+      return element(by.id('homeFlash')).getText();
   }
 
 

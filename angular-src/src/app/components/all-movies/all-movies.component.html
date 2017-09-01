@@ -1,10 +1,11 @@
 <br><br>
 <div class="row"> 
   <div class="col-md-6">
-    <h2><i class="fa fa-users"></i>Movies</h2>
+    <ngx-flash-messages id="tableFlash"></ngx-flash-messages>
+    <h2 id="allMoviesHead"><i class="fa fa-users"></i>All Movies</h2>
   </div>
   <div class="col-md-6">
-    <input style="float:right;" type="text" [(ngModel)]="movieFilter.title" placeholder="Search by title">
+    <input id="tableTitleSearch" style="float:right; border-width:1px; border-style:solid; padding:1px 1px 1px 1px;" type="text" [(ngModel)]="movieFilter.title" placeholder="Search by title">
   </div>
 </div>
 <table *ngIf="movies?.length > 0;" class="table table-striped"> 
@@ -23,8 +24,8 @@
   </thead>
   <tbody>
     <tr *ngFor="let movie of movies | filterBy: movieFilter | paginate: { itemsPerPage: 4, currentPage: page }">
-      <td><img class="thumbnail" src="http://localhost:3000/uploads/{{movie.poster}}" height="50%"></td> 
-      <td>{{movie.title}}</td>
+      <td ><img id="posterField" class="thumbnail" src="http://localhost:3000/uploads/{{movie.poster}}" height="50%"></td> 
+      <td id="tableTitleField">{{movie.title}}</td>
       <td>{{movie.writer}}</td>
       <td>{{movie.director}}</td>
       <td>{{movie.starring}}</td>

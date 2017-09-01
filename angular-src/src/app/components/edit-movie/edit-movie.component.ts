@@ -20,7 +20,7 @@ export class EditMovieComponent implements OnInit, AfterViewInit {
   @ViewChild('movieId') input;
   private movieComponent:MovieComponent
   _id:any;
-  movie:Movie = {
+    movie:Movie = {
     title:'',
     writer:'',
     director:'',

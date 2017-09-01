@@ -1,7 +1,7 @@
 import { HomePageTest } from './home-page.po';
 import { ElementFinder, browser, by, element } from 'protractor';
 
-describe('angular-src App', function() {
+describe('Home Page Tests', function() {
   let page: HomePageTest;
 
   beforeEach(() => {

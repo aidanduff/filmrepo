@@ -86,8 +86,6 @@ export class AddMovieComponent implements OnInit, OnDestroy {
       errData => this.onError(errData));  
   }
 
-  
-
   onClose(){
     this.activeModal.close();
   }

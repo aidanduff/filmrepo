@@ -5,7 +5,7 @@
     Add New Movie
   </div>
   <div class="card-block" id="modBod">
-    <ngx-flash-messages></ngx-flash-messages>
+    <ngx-flash-messages id="addMovieFlash"></ngx-flash-messages>
     <form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
          <div class="form-group">
           <label class="left" for="title">Title: </label>
@@ -108,6 +108,7 @@
         <div class="form-group">
           <label class="left" for="poster">Poster</label>
           <input type="text"
+          id="posterField"
           class="form-control right"
           [(ngModel)]="movie.poster"
           name="poster"
