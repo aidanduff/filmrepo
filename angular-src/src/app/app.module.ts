@@ -30,7 +30,7 @@ import { TestingSandboxComponent } from './components/testing-sandbox/testing-sa
 const appRoutes:Routes =[
   {path:'', component: HomeComponent},
   {path:'home', component: HomeComponent},
-  {path:'dashboard', component: DashboardComponent},
+  {path:'browse', component: DashboardComponent},
   {path:'add-movie', component: AddMovieComponent},
   {path:'edit-movie/:id', component: EditMovieComponent},
   {path:'all-movies', component: AllMoviesComponent},
