@@ -19,3 +19,11 @@ p {
 .card-black{
     background-color: #292B2C;
 }
+
+.modal {
+ overflow-y: auto;
+}
+
+.modal-open {
+ overflow: auto;
+}

@@ -1,7 +1,7 @@
 
 
  <div class="card">
-  <div class="card-header">
+  <div class="card-header" id="addMovieHead">
     Add New Movie
   </div>
   <div class="card-block" id="modBod">
@@ -116,6 +116,7 @@
           >
           <input type="file" 
           class="form-control right"
+          id="imgUpload"
           name="imgUpload"
           ng2FileSelect [uploader]="uploader"
           (change)="onChange($event)" />

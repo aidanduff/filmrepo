@@ -1,4 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { AddMovieModalContent } from '../modals/modals.component';
+import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,19 @@ import { Component, OnInit, Inject } from '@angular/core';
 })
 
 export class HomeComponent implements OnInit {
+  private anyData: any;
+  private anyDataForm: any;
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
   }
+
+  open() {
+      const modalRef = this.modalService.open(AddMovieModalContent);
+      modalRef.componentInstance.anyDataForm = this.anyData;
+      console.log('in navbar component');
+  }
+
+  
 }

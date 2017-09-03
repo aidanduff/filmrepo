@@ -8,8 +8,23 @@ describe('Home Page Tests', function() {
     page = new HomePageTest();
   });
 
-  it('should display message saying flickJournal', () => {
+  it('should display the welcome message', () => {
     page.navigateTo();
-    expect(page.getHeaderText()).toEqual('Welcome to our flickJournal, your life in movies');
+    expect(page.getHeaderText()).toEqual('Welcome to PictureHouse, the home of movies');
+  });
+
+  it('should click the browse button open the browse page', () => {
+    page.navigateTo();
+    expect(page.testBrowseButton()).toEqual('Choose by Genre:');
+  });
+
+  it('should click the add movies button and open the add movie modal', () => {
+    page.navigateTo();
+    expect(page.testAddMoviesButton()).toEqual('Add New Movie');
+  });
+
+  it('should click the all movies button and open the all movies page', () => {
+    page.navigateTo();
+    expect(page.testAllMoviesButton()).toEqual('All Movies');
   });
 });

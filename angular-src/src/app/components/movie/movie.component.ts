@@ -6,6 +6,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { EditMovieModalContent } from '../modals/modals.component';
 import { GetallService } from "../../services/getall.service";
 import { SliderComponent } from '../slider/slider.component';
+import { FlashMessagesService } from "ngx-flash-messages";
 import { Movie } from '../../models/Movie';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
@@ -27,7 +28,7 @@ export class MovieComponent implements OnInit {
   key:string;
 
   constructor(private getallService:GetallService, private router:Router,
-    private modalService: NgbModal, private activatedRoute: ActivatedRoute) {
+    private modalService: NgbModal, private activatedRoute: ActivatedRoute, private flashMessagesService:FlashMessagesService) {
       activatedRoute.params.subscribe(movie => {
         this.id = this.activatedRoute.snapshot.params['id'];
         this.getallService.getMovie(this.id).subscribe(movie => {
@@ -59,7 +60,8 @@ export class MovieComponent implements OnInit {
       this.getallService.deleteMovie(this.id).subscribe(movie => {
       this.movie = movie;
     });
-    this.router.navigate(['/full-catalogue']);
+    this.router.navigate(['/home']);
+    
     }  
   } 
 }

@@ -7,8 +7,8 @@ export class AddMovieTest {
   }
 
   openModal() {
-    element(by.css('body > app-root > div > div > app-navbar > nav > div > ul > li:nth-child(4) > a')).click();
-    return element(by.css('body > ngb-modal-window > div > div > add-movie-modal-content > app-add-movie > div > div.card-header')).getText();
+    element(by.id('addMoviesLink')).click();
+    return element(by.id('addMovieHead')).getText();
   }
 
   submitEmptyForm(){
@@ -62,6 +62,7 @@ export class AddMovieTest {
 
       element(by.css('#submitButton')).click();
       browser.ignoreSynchronization = true;
+      browser.sleep(500);
       return element(by.id('homeFlash')).getText();
   }
 

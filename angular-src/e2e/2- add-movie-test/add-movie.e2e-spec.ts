@@ -10,6 +10,7 @@ describe('Add Movie Tests', function() {
 
   it('should open the add movie modal', () => {
     page.navigateTo();
+    browser.sleep(1000);
     expect(page.openModal()).toEqual('Add New Movie');
   });
 
