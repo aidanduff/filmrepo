@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, Injectable} from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Injectable } from '@angular/core';
 import { GetallService } from "../../services/getall.service";
 import { SliderComponent } from '../slider/slider.component';
 import { Movie } from '../../models/Movie';
@@ -13,40 +13,54 @@ import 'rxjs/add/operator/map';
 })
 
 export class DashboardComponent implements OnInit {
-  @Input() moviesByGenre:Movie[];
-  @Input() moviesByCertificate:Movie[];
-  movies:Movie[];
-  genre:string;
-  movie:Movie;
+  @Input() moviesByGenre: Movie[];
+  @Input() moviesByCertificate: Movie[];
+  movies: Movie[];
+  genre: string;
+  cert;
+  movie: Movie;
 
-  constructor(private getallService:GetallService) { 
+  constructor(private getallService: GetallService) {
   }
 
   ngOnInit() {
   }
 
-  onChange(event: any){
-    this.moviesByGenre = [];
+  onChange(event: any) {
     var selectedGenre = event.srcElement.value;
-    console.log(selectedGenre);
-    this.getallService.getMovieByGenre(selectedGenre).subscribe(moviesByGenre => {
-    this.moviesByGenre = moviesByGenre;
-    });
+    if (selectedGenre == 'All') {
+      this.moviesByGenre = [];
+      this.getallService.getMovies().subscribe(moviesByGenre => {
+        this.moviesByGenre = moviesByGenre;
+      });
+    }
+    else {
+      this.moviesByGenre = [];
+      console.log(selectedGenre);
+      this.getallService.getMovieByGenre(selectedGenre).subscribe(moviesByGenre => {
+        this.moviesByGenre = moviesByGenre;
+      });
+    }
   }
 
-  onChangeCert(event: any){
-    this.moviesByCertificate = [];
+  onChangeCert(event: any) {
     var selectedCertificate = event.srcElement.value;
-    var cert = 0;
-    if(selectedCertificate === 'G'){cert = 0}
-    if(selectedCertificate === 'PG'){cert = 5}
-    if(selectedCertificate === '12'){cert = 12}
-    if(selectedCertificate === '15'){cert = 15}
-    if(selectedCertificate === '18'){cert = 18}
-  
-    console.log(cert);
-    this.getallService.getMovieByCertificate(cert).subscribe(moviesByCertificate => {
-    this.moviesByCertificate = moviesByCertificate;
-    });
+    if (selectedCertificate == 'All') {
+      this.moviesByCertificate = [];
+      this.getallService.getMovies().subscribe(moviesByGenre => {
+        this.moviesByGenre = moviesByGenre;
+      });
+    }
+    else {
+      this.moviesByCertificate = [];
+      if (selectedCertificate === 'PG') { this.cert = 5 }
+      if (selectedCertificate === '12') { this.cert = 12 }
+      if (selectedCertificate === '15') { this.cert = 15 }
+      if (selectedCertificate === '18') { this.cert = 18 }
+
+      this.getallService.getMovieByCertificate(this.cert).subscribe(moviesByCertificate => {
+        this.moviesByCertificate = moviesByCertificate;
+      });
+    }
   }
 }

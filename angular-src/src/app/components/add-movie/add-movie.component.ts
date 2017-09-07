@@ -15,78 +15,78 @@ const URL = 'http://localhost:3000/';
   styleUrls: ['./add-movie.component.css']
 })
 export class AddMovieComponent implements OnInit, OnDestroy {
-  public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
-  id:string;
-  resMovie:Movie;
-  genObject:Object;
-  isLoading:boolean;
-  movie:Movie = {
-    _id:'',
-    title:'',
-    writer:'',
-    director:'',
-    starring:'',
-    genre:'',
-    country:'',
-    year:0,
-    language:'',
-    runtime:0,
-    certificate:0,
-    synopsis:'',
-    poster:'',
+  public uploader: FileUploader = new FileUploader({ url: URL, itemAlias: 'photo' });
+  id: string;
+  resMovie: Movie;
+  genObject: Object;
+  isLoading: boolean;
+  movie: Movie = {
+    _id: '',
+    title: '',
+    writer: '',
+    director: '',
+    starring: '',
+    genre: '',
+    country: '',
+    year: 0,
+    language: '',
+    runtime: 0,
+    certificate: 0,
+    synopsis: '',
+    poster: '',
   }
   @Input() anyDataForm: any;
 
-  constructor(public getallService:GetallService,
-              public router:Router,
-              public route:ActivatedRoute,
-              public activeModal: NgbActiveModal,
-              private flashMessagesService:FlashMessagesService
-            ) { }
+  constructor(public getallService: GetallService,
+    public router: Router,
+    public route: ActivatedRoute,
+    public activeModal: NgbActiveModal,
+    private flashMessagesService: FlashMessagesService
+  ) { }
 
   ngOnInit() {
-    this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
-    this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       console.log("ImageUpload:uploaded:", item, status, response);
     };
   }
 
-  onChange(event: any){
-     var files = event.srcElement.value;
-     var name = files.replace(/^.*\\/, "");
-        this.movie.poster = name;
+  onChange(event: any) {
+    var files = event.srcElement.value;
+    var name = files.replace(/^.*\\/, "");
+    this.movie.poster = name;
 
-        event= null;
+    event = null;
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
 
   }
 
-  onSuccess(data){
+  onSuccess(data) {
     this.flashMessagesService.show('Movie Successfully Added!', {
-      classes: ['alert', 'alert-success'], 
-      timeout: 3000, 
-      });
+      classes: ['alert', 'alert-success'],
+      timeout: 3000,
+    });
     this.activeModal.close();
   }
 
-  onError(data){
-    if(data.status == 400){
+  onError(data) {
+    if (data.status == 400) {
       this.flashMessagesService.show('All fields are required!', {
-        classes: ['alert', 'alert-danger'], 
-        timeout: 3000, 
+        classes: ['alert', 'alert-danger'],
+        timeout: 3000,
       });
     }
   }
 
-  onSubmit({value}:{value:Movie}){
+  onSubmit({ value }: { value: Movie }) {
     this.getallService.addMovie(value).subscribe(
       successData => this.onSuccess(successData),
-      errData => this.onError(errData));  
+      errData => this.onError(errData));
   }
 
-  onClose(){
+  onClose() {
     this.activeModal.close();
   }
 

@@ -1,7 +1,6 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-//book schema definition
 let FilmSchema = new Schema(
   {
     title: { type: String, required: true },
@@ -23,7 +22,6 @@ let FilmSchema = new Schema(
   }
 );
 
-// Sets the createdAt parameter equal to the current time
 FilmSchema.pre('save', next => {
   now = new Date();
   if(!this.createdAt) {
@@ -32,5 +30,4 @@ FilmSchema.pre('save', next => {
   next();
 });
 
-//Exports the BookSchema for use elsewhere.
 module.exports = mongoose.model('film', FilmSchema);

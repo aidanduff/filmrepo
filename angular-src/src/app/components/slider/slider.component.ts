@@ -46,54 +46,5 @@ export class SliderComponent implements OnInit{
     });
   }
 
-  toggleType() {
-    this.type = this.type == 'component' ? 'directive' : 'component';
-  }
-
-  toggleDirection() {
-    this.config.direction = (this.config.direction == 'horizontal') ? 'vertical' : 'horizontal';
-  }
-
-  toggleSlidesPerView() {
-    if (this.config.slidesPerView != 1) {
-      this.config.slidesPerView = 1;
-    } else {
-      this.config.slidesPerView = +this.config.slidesPerView + 1;
-    }
-  }
-
-  toggleOverlayControls() {
-    if (this.config.pagination) {
-      this.config.scrollbar = '.swiper-scrollbar';
-      this.config.pagination = null;
-      this.config.nextButton = null;
-      this.config.prevButton = null;
-    } else if (this.config.scrollbar) {
-      this.config.scrollbar = null;
-    } else {
-      this.config.pagination = '.swiper-pagination';
-      this.config.nextButton = '.swiper-button-next';
-      this.config.prevButton = '.swiper-button-prev';
-    }
-  }
-
-  toggleKeyboardControl() {
-    this.config.keyboardControl = !this.config.keyboardControl;
-  }
-
-  toggleMouseWheelControl() {
-    this.config.mousewheelControl = !this.config.mousewheelControl;
-  }
-
-  onIndexChange(index: number) {
-    console.log('Swiper index: ' + index);
-  }
-
-  // @Input()onMovieClick(id:string){
-  onMovieClick(id:string){
-    console.log('clicked in slider component'+ id);
-    console.log(this.route);
-    this.router.navigate(['/movie/'+id]);
-  }
 }
 

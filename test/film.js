@@ -271,21 +271,6 @@ describe('Integration Tests', () => {
           });
 
         });
-        // it('it should not GET a film by title with no title specified', (done) => {
-        //   let film = new Film(pulpFiction);
-        //   film.save((err, pulpFiction) => {
-        //       chai.request(server)
-        //       .get('/movieApp/films/title/' + Number(1))
-        //       .send(pulpFiction)
-        //       .end((err, res) => {
-        //         res.should.have.status(400);
-        //         res.body.should.be.a('object');
-        //         res.body.should.have.property('name').eql('CastError');
-        //         done();
-        //       });
-        //   });
-        //
-        // });
     });
 
     describe('/GET/genre/:genre film', () => {

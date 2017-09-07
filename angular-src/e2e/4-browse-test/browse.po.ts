@@ -25,7 +25,7 @@ export class BrowseTest {
   browseCertificate(){ 
     element(by.css('body > app-root > div > div > app-navbar > nav > div > ul > li:nth-child(2) > a')).click();
     element(by.css('body > app-root > div > div > app-dashboard > div:nth-child(6) > div > select')).click();
-    element(by.css('body > app-root > div > div > app-dashboard > div:nth-child(6) > div > select > option:nth-child(4)')).click();
+    element(by.css('body > app-root > div > div > app-dashboard > div:nth-child(6) > div > select > option:nth-child(3)')).click();
     browser.sleep(500);
     element(by.css('body > app-root > div > div > app-dashboard > app-slider:nth-child(7) > div > div > div > div > swiper > div > div.swiper-wrapper > div.swiper-slide.swiper-slide-active > div > div > div > p > a')).click();
     browser.sleep(500);
@@ -59,12 +59,12 @@ export class BrowseTest {
     var url = 'C:/Users/Admin/Desktop/images/resized/smaller again/and again/frozen.png';
     element(by.id('imgUpload')).sendKeys(url);
     element(by.css('#modBod > form > div:nth-child(12) > button')).click();
-    browser.sleep(5000);
+    browser.sleep(1000);
     element(by.css('#submitButton')).click();
 
     element(by.css('body > app-root > div > div > app-navbar > nav > div > ul > li:nth-child(2) > a')).click();
     element(by.css('body > app-root > div > div > app-dashboard > div:nth-child(6) > div > select')).click();
-    element(by.css('body > app-root > div > div > app-dashboard > div:nth-child(6) > div > select > option:nth-child(3)')).click();
+    element(by.css('body > app-root > div > div > app-dashboard > div:nth-child(6) > div > select > option:nth-child(2)')).click();
     browser.sleep(500);
     element(by.css('body > app-root > div > div > app-dashboard > app-slider:nth-child(7) > div > div > div > div > swiper > div > div.swiper-button-next')).click();
     element(by.css('body > app-root > div > div > app-dashboard > app-slider:nth-child(7) > div > div > div > div > swiper > div > div.swiper-button-next')).click();
@@ -75,7 +75,7 @@ export class BrowseTest {
   deleteMovieFromSingleMoviePage(){
     element(by.css('body > app-root > div > div > app-navbar > nav > div > ul > li:nth-child(2) > a')).click();
     element(by.css('body > app-root > div > div > app-dashboard > div:nth-child(6) > div > select')).click();
-    element(by.css('body > app-root > div > div > app-dashboard > div:nth-child(6) > div > select > option:nth-child(3)')).click();
+    element(by.css('body > app-root > div > div > app-dashboard > div:nth-child(6) > div > select > option:nth-child(2)')).click();
     browser.sleep(500);
     element(by.css('body > app-root > div > div > app-dashboard > app-slider:nth-child(7) > div > div > div > div > swiper > div > div.swiper-button-next')).click();
     element(by.css('body > app-root > div > div > app-dashboard > app-slider:nth-child(7) > div > div > div > div > swiper > div > div.swiper-button-next')).click();

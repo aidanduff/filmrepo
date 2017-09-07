@@ -24,7 +24,6 @@ import { GetallService} from "./services/getall.service";
 import { SliderComponent } from './components/slider/slider.component';
 import { FlashMessagesModule } from 'ngx-flash-messages';
 import { AllMoviesComponent } from './components/all-movies/all-movies.component';
-import { TestingSandboxComponent } from './components/testing-sandbox/testing-sandbox.component';
 
 
 const appRoutes:Routes =[
@@ -35,9 +34,9 @@ const appRoutes:Routes =[
   {path:'edit-movie/:id', component: EditMovieComponent},
   {path:'all-movies', component: AllMoviesComponent},
   {path:'movie/:id', component: MovieComponent},
-  {path:'slider', component: SliderComponent},
-  {path:'testbox', component: TestingSandboxComponent}
+  {path:'slider', component: SliderComponent}
 ]
+
 const SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto',
@@ -58,8 +57,7 @@ const SWIPER_CONFIG: SwiperConfigInterface = {
     ModalsComponent,
     SliderComponent,
     FileSelectDirective,
-    AllMoviesComponent,
-    TestingSandboxComponent
+    AllMoviesComponent
   ],
   imports: [
     Ng2PaginationModule,

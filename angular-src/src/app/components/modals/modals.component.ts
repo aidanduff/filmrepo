@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'add-movie-modal-content',
   template: ` <app-add-movie></app-add-movie> `
 })
 
-export class AddMovieModalContent{
+export class AddMovieModalContent {
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(public activeModal: NgbActiveModal) { }
 
 }
 
@@ -17,10 +17,10 @@ export class AddMovieModalContent{
   template: ` <app-edit-movie></app-edit-movie> `
 })
 
-export class EditMovieModalContent{
+export class EditMovieModalContent {
 
-  constructor(public activeModal: NgbActiveModal) {}
-  
+  constructor(public activeModal: NgbActiveModal) { }
+
 }
 
 @Component({
@@ -28,11 +28,11 @@ export class EditMovieModalContent{
   templateUrl: './modals.component.html',
   styleUrls: ['./modals.component.css']
 })
-export class ModalsComponent implements OnInit{
+export class ModalsComponent implements OnInit {
 
   constructor(private modalService: NgbModal) { }
 
-  ngOnInit(){
+  ngOnInit() {
     console.log('modal');
   }
 }

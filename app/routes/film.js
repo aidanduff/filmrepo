@@ -38,9 +38,6 @@ function postFilm(req, res) {
     });
 }
 
-/*
- * GET /film/:id route to retrieve a film given its id.
- */
 function getFilm(req, res, next) {
     Film.findById(req.params.id, (err, film) => {
         if(err) {
