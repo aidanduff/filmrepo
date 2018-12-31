@@ -28,7 +28,7 @@ export class AllMoviesComponent {
     config: NgbPaginationConfig, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private flashMessagesService: FlashMessagesService) {
     this.getallService.getMovies().subscribe(movies => {
       this.movies = movies;
-      this.collectSize = movies.length;
+      this.collectSize = movies.length();
     });
     config.pageSize = 4;
   }
