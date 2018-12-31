@@ -22,6 +22,7 @@ export class SliderComponent implements OnInit{
     scrollbar: null,
     direction: 'horizontal',
     slidesPerView: 5,
+    observer: true,
     scrollbarHide: false,
     keyboardControl: true,
     mousewheelControl: true,
