@@ -7,8 +7,7 @@ var multer = require('multer');
 let morgan = require('morgan');
 const cors = require('cors');
 
-// let port = 3000; //commented out on 1/1/19 prioer to depoloy
-let port = process.env.PORT || 8080; //replaced the above line
+let port = 3000; 
 let film = require('./app/routes/film');
 let config = require('config'); 
 var path = require('path');

@@ -10,55 +10,42 @@ export class GetallService {
   id:String;
   
   constructor(private http:Http) { }
-
-  //all below commented code prior to deployment on 1/1/19. http://localhost:3000 was just removed from each request.
-
   getMovies(){
-    // return this.http.get('http://localhost:3000/movieApp/films').map( res => res.json());
-    return this.http.get('movieApp/films').map( res => res.json());
-    
+    return this.http.get('http://localhost:3000/movieApp/films').map( res => res.json());    
   }
 
   getMovie(id:string){
     console.log('getMovie called')
-    // return this.http.get('http://localhost:3000/movieApp/films/'+id).map( res => res.json());
-    return this.http.get('movieApp/films/'+id).map( res => res.json());
-    
+    return this.http.get('http://localhost:3000/movieApp/films/'+id).map( res => res.json());
   }
 
   updateMovie(id:string, movie:Movie){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // return this.http.put('http://localhost:3000/movieApp/films/'+id, movie, { headers: headers }).map((res: Response) => res.json()).subscribe(movie => this.movie = movie);
-    return this.http.put('movieApp/films/'+id, movie, { headers: headers }).map((res: Response) => res.json()).subscribe(movie => this.movie = movie);
+    return this.http.put('http://localhost:3000/movieApp/films/'+id, movie, { headers: headers }).map((res: Response) => res.json()).subscribe(movie => this.movie = movie);
   }
 
   addMovie(movie:Movie){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // return this.http.post('http://localhost:3000/movieApp/films/', movie, { headers: headers }).map((res: Response) => res.json());
-    return this.http.post('movieApp/films/', movie, { headers: headers }).map((res: Response) => res.json());
+    return this.http.post('http://localhost:3000/movieApp/films/', movie, { headers: headers }).map((res: Response) => res.json());
   }
 
   deleteMovie(id:string){
-    // return this.http.delete('http://localhost:3000/movieApp/films/'+id).map( res => res.json());
-    return this.http.delete('movieApp/films/'+id).map( res => res.json());
+    return this.http.delete('http://localhost:3000/movieApp/films/'+id).map( res => res.json());
     
   }
 
   getMovieByGenre(genre:string){
-    // return this.http.get('http://localhost:3000/movieApp/films/genre/'+genre).map( res => res.json());
-    return this.http.get('movieApp/films/genre/'+genre).map( res => res.json());
+    return this.http.get('http://localhost:3000/movieApp/films/genre/'+genre).map( res => res.json());
   }
 
   getMovieByCertificate(certificate:number){
-    // return this.http.get('http://localhost:3000/movieApp/films/certificate/'+certificate).map( res => res.json());
-    return this.http.get('movieApp/films/certificate/'+certificate).map( res => res.json());
+    return this.http.get('http://localhost:3000/movieApp/films/certificate/'+certificate).map( res => res.json());
   }
 
   getMovieByTitle(title:string){
-    // return this.http.get('http://localhost:3000/movieApp/films/title/'+title).map( res => res.json());
-    return this.http.get('movieApp/films/title/'+title).map( res => res.json());
+    return this.http.get('http://localhost:3000/movieApp/films/title/'+title).map( res => res.json());
   }
 }
 
